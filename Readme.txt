@@ -1,3 +1,1 @@
-Test
-Next test
-Test again
+Windows edition of VirtualGUser
