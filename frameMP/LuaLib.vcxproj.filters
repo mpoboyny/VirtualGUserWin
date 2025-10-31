@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="$(LUA_DIR)\include\lauxlib.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\include\lua.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\include\lua.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\include\lualib.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lmem.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lobject.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lopcodes.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lparser.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lstate.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lstring.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\ltable.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\ltm.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lundump.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lvm.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lzio.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lapi.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lcode.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\ldebug.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\ldo.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lfunc.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\lgc.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\llex.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(LUA_DIR)\src\llimits.h">
+      <Filter>LuaCore</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{42ec2bc9-09fc-4ed5-8762-512e5cc2d6a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="LuaCore">
+      <UniqueIdentifier>{f0e95f3d-6070-45a8-b500-f7eb59bc5aa2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(LUA_DIR)\src\lobject.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lopcodes.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lparser.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lstate.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lstring.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\ltable.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\ltests.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\ltm.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lundump.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lvm.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lzio.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lapi.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lcode.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\ldebug.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\ldo.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\ldump.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lfunc.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lgc.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\llex.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lmem.c">
+      <Filter>LuaCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(LUA_DIR)\src\lib\loadlib.c" />
+    <ClCompile Include="$(LUA_DIR)\src\lib\lstrlib.c" />
+    <ClCompile Include="$(LUA_DIR)\src\lib\ltablib.c" />
+    <ClCompile Include="$(LUA_DIR)\src\lib\lauxlib.c" />
+    <ClCompile Include="$(LUA_DIR)\src\lib\lbaselib.c" />
+    <ClCompile Include="$(LUA_DIR)\src\lib\ldblib.c" />
+    <ClCompile Include="$(LUA_DIR)\src\lib\liolib.c" />
+    <ClCompile Include="$(LUA_DIR)\src\lib\lmathlib.c" />
+  </ItemGroup>
+</Project>

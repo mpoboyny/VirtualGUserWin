@@ -11,163 +11,80 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "frameMP", "frameMP", "{5E19
 		frameMP\versionLUA.txt = frameMP\versionLUA.txt
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lua-5.0.2", "lua-5.0.2", "{272DF2B1-2866-43CA-B17C-1F57998EE6D5}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaLib", "frameMP\LuaLib.vcxproj", "{FAE2F980-D095-4E90-BD77-41CF4252359F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cxx", "cxx", "{7C6F51E9-C634-4101-ABB9-927F54134633}"
-	ProjectSection(SolutionItems) = preProject
-		frameMP\lua-5.0.2\cxx\testUserData.cxx = frameMP\lua-5.0.2\cxx\testUserData.cxx
-		frameMP\lua-5.0.2\cxx\UserDataExample.lua = frameMP\lua-5.0.2\cxx\UserDataExample.lua
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaI", "frameMP\LuaI.vcxproj", "{4C621604-4B24-4529-9A7F-F6FE391BF553}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{F0DEAE1A-DA00-483E-A109-A1500EB54F1F}"
-	ProjectSection(SolutionItems) = preProject
-		frameMP\lua-5.0.2\doc\contents.html = frameMP\lua-5.0.2\doc\contents.html
-		frameMP\lua-5.0.2\doc\logo.gif = frameMP\lua-5.0.2\doc\logo.gif
-		frameMP\lua-5.0.2\doc\lua.1 = frameMP\lua-5.0.2\doc\lua.1
-		frameMP\lua-5.0.2\doc\lua.html = frameMP\lua-5.0.2\doc\lua.html
-		frameMP\lua-5.0.2\doc\luac.1 = frameMP\lua-5.0.2\doc\luac.1
-		frameMP\lua-5.0.2\doc\luac.html = frameMP\lua-5.0.2\doc\luac.html
-		frameMP\lua-5.0.2\doc\manual.html = frameMP\lua-5.0.2\doc\manual.html
-		frameMP\lua-5.0.2\doc\readme.html = frameMP\lua-5.0.2\doc\readme.html
-		frameMP\lua-5.0.2\doc\refman-5.0.pdf = frameMP\lua-5.0.2\doc\refman-5.0.pdf
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "etc", "etc", "{10DEBA2F-E099-4073-8AF6-51551D00FF20}"
-	ProjectSection(SolutionItems) = preProject
-		frameMP\lua-5.0.2\etc\bin2c.c = frameMP\lua-5.0.2\etc\bin2c.c
-		frameMP\lua-5.0.2\etc\compat.lua = frameMP\lua-5.0.2\etc\compat.lua
-		frameMP\lua-5.0.2\etc\doall.lua = frameMP\lua-5.0.2\etc\doall.lua
-		frameMP\lua-5.0.2\etc\lua.ico = frameMP\lua-5.0.2\etc\lua.ico
-		frameMP\lua-5.0.2\etc\lua.magic = frameMP\lua-5.0.2\etc\lua.magic
-		frameMP\lua-5.0.2\etc\lua.xpm = frameMP\lua-5.0.2\etc\lua.xpm
-		frameMP\lua-5.0.2\etc\luser_number.h = frameMP\lua-5.0.2\etc\luser_number.h
-		frameMP\lua-5.0.2\etc\luser_tests.h = frameMP\lua-5.0.2\etc\luser_tests.h
-		frameMP\lua-5.0.2\etc\min.c = frameMP\lua-5.0.2\etc\min.c
-		frameMP\lua-5.0.2\etc\noparser.c = frameMP\lua-5.0.2\etc\noparser.c
-		frameMP\lua-5.0.2\etc\README = frameMP\lua-5.0.2\etc\README
-		frameMP\lua-5.0.2\etc\saconfig.c = frameMP\lua-5.0.2\etc\saconfig.c
-		frameMP\lua-5.0.2\etc\trace.c = frameMP\lua-5.0.2\etc\trace.c
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{CC118A3B-B1F1-499F-8C19-AAD49A9AEAF1}"
-	ProjectSection(SolutionItems) = preProject
-		frameMP\lua-5.0.2\include\lauxlib.h = frameMP\lua-5.0.2\include\lauxlib.h
-		frameMP\lua-5.0.2\include\lua.h = frameMP\lua-5.0.2\include\lua.h
-		frameMP\lua-5.0.2\include\lua.hxx = frameMP\lua-5.0.2\include\lua.hxx
-		frameMP\lua-5.0.2\include\lualib.h = frameMP\lua-5.0.2\include\lualib.h
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5932E05D-3D5B-4547-89D7-B6BF6E3902EE}"
-	ProjectSection(SolutionItems) = preProject
-		frameMP\lua-5.0.2\src\lapi.c = frameMP\lua-5.0.2\src\lapi.c
-		frameMP\lua-5.0.2\src\lapi.h = frameMP\lua-5.0.2\src\lapi.h
-		frameMP\lua-5.0.2\src\lcode.c = frameMP\lua-5.0.2\src\lcode.c
-		frameMP\lua-5.0.2\src\lcode.h = frameMP\lua-5.0.2\src\lcode.h
-		frameMP\lua-5.0.2\src\ldebug.c = frameMP\lua-5.0.2\src\ldebug.c
-		frameMP\lua-5.0.2\src\ldebug.h = frameMP\lua-5.0.2\src\ldebug.h
-		frameMP\lua-5.0.2\src\ldo.c = frameMP\lua-5.0.2\src\ldo.c
-		frameMP\lua-5.0.2\src\ldo.h = frameMP\lua-5.0.2\src\ldo.h
-		frameMP\lua-5.0.2\src\ldump.c = frameMP\lua-5.0.2\src\ldump.c
-		frameMP\lua-5.0.2\src\lfunc.c = frameMP\lua-5.0.2\src\lfunc.c
-		frameMP\lua-5.0.2\src\lfunc.h = frameMP\lua-5.0.2\src\lfunc.h
-		frameMP\lua-5.0.2\src\lgc.c = frameMP\lua-5.0.2\src\lgc.c
-		frameMP\lua-5.0.2\src\lgc.h = frameMP\lua-5.0.2\src\lgc.h
-		frameMP\lua-5.0.2\src\llex.c = frameMP\lua-5.0.2\src\llex.c
-		frameMP\lua-5.0.2\src\llex.h = frameMP\lua-5.0.2\src\llex.h
-		frameMP\lua-5.0.2\src\llimits.h = frameMP\lua-5.0.2\src\llimits.h
-		frameMP\lua-5.0.2\src\lmem.c = frameMP\lua-5.0.2\src\lmem.c
-		frameMP\lua-5.0.2\src\lmem.h = frameMP\lua-5.0.2\src\lmem.h
-		frameMP\lua-5.0.2\src\lobject.c = frameMP\lua-5.0.2\src\lobject.c
-		frameMP\lua-5.0.2\src\lobject.h = frameMP\lua-5.0.2\src\lobject.h
-		frameMP\lua-5.0.2\src\lopcodes.c = frameMP\lua-5.0.2\src\lopcodes.c
-		frameMP\lua-5.0.2\src\lopcodes.h = frameMP\lua-5.0.2\src\lopcodes.h
-		frameMP\lua-5.0.2\src\lparser.c = frameMP\lua-5.0.2\src\lparser.c
-		frameMP\lua-5.0.2\src\lparser.h = frameMP\lua-5.0.2\src\lparser.h
-		frameMP\lua-5.0.2\src\lstate.c = frameMP\lua-5.0.2\src\lstate.c
-		frameMP\lua-5.0.2\src\lstate.h = frameMP\lua-5.0.2\src\lstate.h
-		frameMP\lua-5.0.2\src\lstring.c = frameMP\lua-5.0.2\src\lstring.c
-		frameMP\lua-5.0.2\src\lstring.h = frameMP\lua-5.0.2\src\lstring.h
-		frameMP\lua-5.0.2\src\ltable.c = frameMP\lua-5.0.2\src\ltable.c
-		frameMP\lua-5.0.2\src\ltable.h = frameMP\lua-5.0.2\src\ltable.h
-		frameMP\lua-5.0.2\src\ltests.c = frameMP\lua-5.0.2\src\ltests.c
-		frameMP\lua-5.0.2\src\ltm.c = frameMP\lua-5.0.2\src\ltm.c
-		frameMP\lua-5.0.2\src\ltm.h = frameMP\lua-5.0.2\src\ltm.h
-		frameMP\lua-5.0.2\src\lundump.c = frameMP\lua-5.0.2\src\lundump.c
-		frameMP\lua-5.0.2\src\lundump.h = frameMP\lua-5.0.2\src\lundump.h
-		frameMP\lua-5.0.2\src\lvm.c = frameMP\lua-5.0.2\src\lvm.c
-		frameMP\lua-5.0.2\src\lvm.h = frameMP\lua-5.0.2\src\lvm.h
-		frameMP\lua-5.0.2\src\lzio.c = frameMP\lua-5.0.2\src\lzio.c
-		frameMP\lua-5.0.2\src\lzio.h = frameMP\lua-5.0.2\src\lzio.h
-		frameMP\lua-5.0.2\src\README = frameMP\lua-5.0.2\src\README
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{064856AB-2823-4F32-A8DD-8EC12F211D68}"
-	ProjectSection(SolutionItems) = preProject
-		frameMP\lua-5.0.2\src\lib\lauxlib.c = frameMP\lua-5.0.2\src\lib\lauxlib.c
-		frameMP\lua-5.0.2\src\lib\lbaselib.c = frameMP\lua-5.0.2\src\lib\lbaselib.c
-		frameMP\lua-5.0.2\src\lib\ldblib.c = frameMP\lua-5.0.2\src\lib\ldblib.c
-		frameMP\lua-5.0.2\src\lib\liolib.c = frameMP\lua-5.0.2\src\lib\liolib.c
-		frameMP\lua-5.0.2\src\lib\lmathlib.c = frameMP\lua-5.0.2\src\lib\lmathlib.c
-		frameMP\lua-5.0.2\src\lib\loadlib.c = frameMP\lua-5.0.2\src\lib\loadlib.c
-		frameMP\lua-5.0.2\src\lib\lstrlib.c = frameMP\lua-5.0.2\src\lib\lstrlib.c
-		frameMP\lua-5.0.2\src\lib\ltablib.c = frameMP\lua-5.0.2\src\lib\ltablib.c
-		frameMP\lua-5.0.2\src\lib\makefile = frameMP\lua-5.0.2\src\lib\makefile
-		frameMP\lua-5.0.2\src\lib\README = frameMP\lua-5.0.2\src\lib\README
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lua", "lua", "{BDDA962E-C293-4865-8E03-B2009226AA85}"
-	ProjectSection(SolutionItems) = preProject
-		frameMP\lua-5.0.2\src\lua\lua.c = frameMP\lua-5.0.2\src\lua\lua.c
-		frameMP\lua-5.0.2\src\lua\README = frameMP\lua-5.0.2\src\lua\README
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "luac", "luac", "{E5880314-268F-4DEB-8BA4-2CCABA5E435E}"
-	ProjectSection(SolutionItems) = preProject
-		frameMP\lua-5.0.2\src\luac\luac.c = frameMP\lua-5.0.2\src\luac\luac.c
-		frameMP\lua-5.0.2\src\luac\print.c = frameMP\lua-5.0.2\src\luac\print.c
-		frameMP\lua-5.0.2\src\luac\README = frameMP\lua-5.0.2\src\luac\README
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{EF92ED01-F0A3-41AE-B7B4-8BFDF141D148}"
-	ProjectSection(SolutionItems) = preProject
-		frameMP\lua-5.0.2\test\bisect.lua = frameMP\lua-5.0.2\test\bisect.lua
-		frameMP\lua-5.0.2\test\cf.lua = frameMP\lua-5.0.2\test\cf.lua
-		frameMP\lua-5.0.2\test\echo.lua = frameMP\lua-5.0.2\test\echo.lua
-		frameMP\lua-5.0.2\test\env.lua = frameMP\lua-5.0.2\test\env.lua
-		frameMP\lua-5.0.2\test\factorial.lua = frameMP\lua-5.0.2\test\factorial.lua
-		frameMP\lua-5.0.2\test\fib.lua = frameMP\lua-5.0.2\test\fib.lua
-		frameMP\lua-5.0.2\test\fibfor.lua = frameMP\lua-5.0.2\test\fibfor.lua
-		frameMP\lua-5.0.2\test\globals.lua = frameMP\lua-5.0.2\test\globals.lua
-		frameMP\lua-5.0.2\test\hello.lua = frameMP\lua-5.0.2\test\hello.lua
-		frameMP\lua-5.0.2\test\life.lua = frameMP\lua-5.0.2\test\life.lua
-		frameMP\lua-5.0.2\test\luac.lua = frameMP\lua-5.0.2\test\luac.lua
-		frameMP\lua-5.0.2\test\printf.lua = frameMP\lua-5.0.2\test\printf.lua
-		frameMP\lua-5.0.2\test\README = frameMP\lua-5.0.2\test\README
-		frameMP\lua-5.0.2\test\readonly.lua = frameMP\lua-5.0.2\test\readonly.lua
-		frameMP\lua-5.0.2\test\sieve.lua = frameMP\lua-5.0.2\test\sieve.lua
-		frameMP\lua-5.0.2\test\sort.lua = frameMP\lua-5.0.2\test\sort.lua
-		frameMP\lua-5.0.2\test\table.lua = frameMP\lua-5.0.2\test\table.lua
-		frameMP\lua-5.0.2\test\trace-calls.lua = frameMP\lua-5.0.2\test\trace-calls.lua
-		frameMP\lua-5.0.2\test\trace-globals.lua = frameMP\lua-5.0.2\test\trace-globals.lua
-		frameMP\lua-5.0.2\test\undefined.lua = frameMP\lua-5.0.2\test\undefined.lua
-		frameMP\lua-5.0.2\test\xd.lua = frameMP\lua-5.0.2\test\xd.lua
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaC", "frameMP\LuaC.vcxproj", "{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}"
 EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Deploy|x64 = Deploy|x64
+		Deploy|x86 = Deploy|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		Trace|x64 = Trace|x64
+		Trace|x86 = Trace|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Debug|x64.ActiveCfg = Debug|x64
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Debug|x64.Build.0 = Debug|x64
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Debug|x86.ActiveCfg = Debug|Win32
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Debug|x86.Build.0 = Debug|Win32
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Deploy|x64.ActiveCfg = Deploy|x64
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Deploy|x64.Build.0 = Deploy|x64
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Deploy|x86.ActiveCfg = Deploy|Win32
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Deploy|x86.Build.0 = Deploy|Win32
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Release|x64.ActiveCfg = Release|x64
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Release|x64.Build.0 = Release|x64
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Release|x86.ActiveCfg = Release|Win32
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Release|x86.Build.0 = Release|Win32
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Trace|x64.ActiveCfg = Trace|x64
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Trace|x64.Build.0 = Trace|x64
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Trace|x86.ActiveCfg = Trace|Win32
+		{FAE2F980-D095-4E90-BD77-41CF4252359F}.Trace|x86.Build.0 = Trace|Win32
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Debug|x64.ActiveCfg = Debug|x64
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Debug|x64.Build.0 = Debug|x64
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Debug|x86.ActiveCfg = Debug|Win32
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Debug|x86.Build.0 = Debug|Win32
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Deploy|x64.ActiveCfg = Debug|x64
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Deploy|x64.Build.0 = Debug|x64
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Deploy|x86.ActiveCfg = Debug|Win32
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Deploy|x86.Build.0 = Debug|Win32
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Release|x64.ActiveCfg = Release|x64
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Release|x64.Build.0 = Release|x64
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Release|x86.ActiveCfg = Release|Win32
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Release|x86.Build.0 = Release|Win32
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Trace|x64.ActiveCfg = Trace|x64
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Trace|x64.Build.0 = Trace|x64
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Trace|x86.ActiveCfg = Trace|Win32
+		{4C621604-4B24-4529-9A7F-F6FE391BF553}.Trace|x86.Build.0 = Trace|Win32
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Debug|x64.ActiveCfg = Debug|x64
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Debug|x64.Build.0 = Debug|x64
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Debug|x86.ActiveCfg = Debug|Win32
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Debug|x86.Build.0 = Debug|Win32
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Deploy|x64.ActiveCfg = Debug|x64
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Deploy|x64.Build.0 = Debug|x64
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Deploy|x86.ActiveCfg = Debug|Win32
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Deploy|x86.Build.0 = Debug|Win32
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Release|x64.ActiveCfg = Release|x64
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Release|x64.Build.0 = Release|x64
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Release|x86.ActiveCfg = Release|Win32
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Release|x86.Build.0 = Release|Win32
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Trace|x64.ActiveCfg = Trace|x64
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Trace|x64.Build.0 = Trace|x64
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Trace|x86.ActiveCfg = Trace|Win32
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA}.Trace|x86.Build.0 = Trace|Win32
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{272DF2B1-2866-43CA-B17C-1F57998EE6D5} = {5E19931F-967A-4117-9452-760B9373AD12}
-		{7C6F51E9-C634-4101-ABB9-927F54134633} = {272DF2B1-2866-43CA-B17C-1F57998EE6D5}
-		{F0DEAE1A-DA00-483E-A109-A1500EB54F1F} = {272DF2B1-2866-43CA-B17C-1F57998EE6D5}
-		{10DEBA2F-E099-4073-8AF6-51551D00FF20} = {272DF2B1-2866-43CA-B17C-1F57998EE6D5}
-		{CC118A3B-B1F1-499F-8C19-AAD49A9AEAF1} = {272DF2B1-2866-43CA-B17C-1F57998EE6D5}
-		{5932E05D-3D5B-4547-89D7-B6BF6E3902EE} = {272DF2B1-2866-43CA-B17C-1F57998EE6D5}
-		{064856AB-2823-4F32-A8DD-8EC12F211D68} = {5932E05D-3D5B-4547-89D7-B6BF6E3902EE}
-		{BDDA962E-C293-4865-8E03-B2009226AA85} = {5932E05D-3D5B-4547-89D7-B6BF6E3902EE}
-		{E5880314-268F-4DEB-8BA4-2CCABA5E435E} = {5932E05D-3D5B-4547-89D7-B6BF6E3902EE}
-		{EF92ED01-F0A3-41AE-B7B4-8BFDF141D148} = {272DF2B1-2866-43CA-B17C-1F57998EE6D5}
+		{FAE2F980-D095-4E90-BD77-41CF4252359F} = {5E19931F-967A-4117-9452-760B9373AD12}
+		{4C621604-4B24-4529-9A7F-F6FE391BF553} = {5E19931F-967A-4117-9452-760B9373AD12}
+		{58F806D8-CA33-439F-8D25-8D8CD0FC67BA} = {5E19931F-967A-4117-9452-760B9373AD12}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {21F662A9-EDBE-49C4-9C1A-4145EC69C9D1}
