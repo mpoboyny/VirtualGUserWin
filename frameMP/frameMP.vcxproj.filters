@@ -33,8 +33,12 @@
     <None Include="source\wndWin.inl">
       <Filter>source</Filter>
     </None>
-    <None Include="inlude\FrameMP\file.inl" />
-    <None Include="inlude\frameMP\Lua\luaObj.inl" />
+    <None Include="include\file.inl">
+      <Filter>include</Filter>
+    </None>
+    <None Include="include\Lua\luaObj.inl">
+      <Filter>include\Lua</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\error.cxx">
@@ -72,23 +76,59 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="inlude\FrameMP\app.hxx" />
-    <ClInclude Include="inlude\FrameMP\error.hxx" />
-    <ClInclude Include="inlude\FrameMP\file.hxx" />
-    <ClInclude Include="inlude\FrameMP\lin.hxx" />
-    <ClInclude Include="inlude\FrameMP\Lua\lua.hxx" />
-    <ClInclude Include="inlude\FrameMP\Lua\luaObj.hxx" />
-    <ClInclude Include="inlude\frameMP\Lua\luaRtObj.hxx" />
-    <ClInclude Include="inlude\FrameMP\Lua\luaRuntime.hxx" />
-    <ClInclude Include="inlude\frameMP\mathTools.hxx" />
-    <ClInclude Include="inlude\FrameMP\mp.hxx" />
-    <ClInclude Include="inlude\FrameMP\msgHandling.hxx" />
-    <ClInclude Include="inlude\FrameMP\prc.hxx" />
-    <ClInclude Include="inlude\FrameMP\str.hxx" />
-    <ClInclude Include="inlude\FrameMP\tcharLin.hxx" />
-    <ClInclude Include="inlude\FrameMP\tools.hxx" />
-    <ClInclude Include="inlude\FrameMP\trace.hxx" />
-    <ClInclude Include="inlude\FrameMP\win.hxx" />
-    <ClInclude Include="inlude\FrameMP\wnd.hxx" />
+    <ClInclude Include="include\app.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\error.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\file.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\lin.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\mathTools.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\mp.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\msgHandling.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\prc.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\str.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tcharLin.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\tools.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\trace.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\win.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\wnd.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Lua\lua.hxx">
+      <Filter>include\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Lua\luaObj.hxx">
+      <Filter>include\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Lua\luaRtObj.hxx">
+      <Filter>include\Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Lua\luaRuntime.hxx">
+      <Filter>include\Lua</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
