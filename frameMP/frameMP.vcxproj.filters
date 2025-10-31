@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{9d6beaf8-f766-4228-a9b3-507e1df54789}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{b9c05f67-aec8-4033-a6ef-76a4b7209cd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\Lua">
+      <UniqueIdentifier>{e81b184d-f2a7-4240-baf1-421db69617c1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="source\fileLin.inl">
+      <Filter>source</Filter>
+    </None>
+    <None Include="source\fileWIn.inl">
+      <Filter>source</Filter>
+    </None>
+    <None Include="source\makefile">
+      <Filter>source</Filter>
+    </None>
+    <None Include="source\prcLin.inl">
+      <Filter>source</Filter>
+    </None>
+    <None Include="source\prcWin.inl">
+      <Filter>source</Filter>
+    </None>
+    <None Include="source\wndLin.inl">
+      <Filter>source</Filter>
+    </None>
+    <None Include="source\wndWin.inl">
+      <Filter>source</Filter>
+    </None>
+    <None Include="inlude\FrameMP\file.inl" />
+    <None Include="inlude\frameMP\Lua\luaObj.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\error.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\file.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\luaObj.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\luaRuntime.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\msgHandling.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\prc.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\str.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\wnd.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\app.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\luaRtObj.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\mathTools.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inlude\FrameMP\app.hxx" />
+    <ClInclude Include="inlude\FrameMP\error.hxx" />
+    <ClInclude Include="inlude\FrameMP\file.hxx" />
+    <ClInclude Include="inlude\FrameMP\lin.hxx" />
+    <ClInclude Include="inlude\FrameMP\Lua\lua.hxx" />
+    <ClInclude Include="inlude\FrameMP\Lua\luaObj.hxx" />
+    <ClInclude Include="inlude\frameMP\Lua\luaRtObj.hxx" />
+    <ClInclude Include="inlude\FrameMP\Lua\luaRuntime.hxx" />
+    <ClInclude Include="inlude\frameMP\mathTools.hxx" />
+    <ClInclude Include="inlude\FrameMP\mp.hxx" />
+    <ClInclude Include="inlude\FrameMP\msgHandling.hxx" />
+    <ClInclude Include="inlude\FrameMP\prc.hxx" />
+    <ClInclude Include="inlude\FrameMP\str.hxx" />
+    <ClInclude Include="inlude\FrameMP\tcharLin.hxx" />
+    <ClInclude Include="inlude\FrameMP\tools.hxx" />
+    <ClInclude Include="inlude\FrameMP\trace.hxx" />
+    <ClInclude Include="inlude\FrameMP\win.hxx" />
+    <ClInclude Include="inlude\FrameMP\wnd.hxx" />
+  </ItemGroup>
+</Project>
