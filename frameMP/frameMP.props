@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+	<FRAMEMP_BUILD_ROOT Condition="'$(PARENT_FRAME_BUILD_ROOT)' == ''">$(ProjectDir)</FRAMEMP_BUILD_ROOT>
+	<FRAMEMP_BUILD_ROOT Condition="'$(PARENT_FRAME_BUILD_ROOT)' != ''">$(PARENT_FRAME_BUILD_ROOT)</FRAMEMP_BUILD_ROOT>
+    <!--Read lua version-->
+	<LUA_VERSION>$([System.IO.File]::ReadAllText("$(FRAMEMP_BUILD_ROOT)\versionLUA.txt"))</LUA_VERSION>
+    <!--Read frameMP version-->
+    <FRAMEMP_VERSION>$([System.IO.File]::ReadAllText("$(FRAMEMP_BUILD_ROOT)\versionFMP.txt"))</FRAMEMP_VERSION>
+	
+	<!--IsDebug: search for 'Debug' in Configuration-->
+    <IS_DEBUG>$([System.Convert]::ToString( $([System.Text.RegularExpressions.Regex]::IsMatch($(Configuration), '[Dd]ebug'))))</IS_DEBUG>
+	<!--IsTrace: search for 'Trace' in Configuration-->
+    <IS_TRACE>$([System.Convert]::ToString( $([System.Text.RegularExpressions.Regex]::IsMatch($(Configuration), '[Tt]race'))))</IS_TRACE>
+
+    <!--Platform-->
+    <ARCH Condition="'$(Platform)' == 'Win32'">x86</ARCH>
+    <ARCH Condition="'$(Platform)' == 'x64'">x64</ARCH>
+	
+	<!--VSSufix-->
+	<VSSufix>vs</VSSufix>
+	
+    <!--Folders-->
+	<LUA_DIR>lua-$(LUA_VERSION)</LUA_DIR>
+	<!--FRAMEMP_DIR>frameMP-$(FRAMEMP_VERSION)-</FRAMEMP_DIR-->
+	<!--OUT_ROOT>$(ProjectDir)..\..\bin\</OUT_ROOT-->
+	
+	<WinAPI32libs>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib</WinAPI32libs>
+	
+	<!--Bin names-->
+	<LuaLibName>lua-$(LUA_VERSION)</LuaLibName>
+	<LuaIntName>luai-$(LUA_VERSION)</LuaIntName>
+	<LuaCmpName>luac-$(LUA_VERSION)</LuaCmpName>
+	<FrameMPlibName>frameMP-$(FRAMEMP_VERSION)</FrameMPlibName>
+  </PropertyGroup>
+
+  
+  <Choose>
+    <When Condition="$([System.Convert]::ToBoolean($(IS_DEBUG)))">
+      <!-- debug macroses -->
+      <PropertyGroup Label="UserMacros">
+        <MyOutMode>debug</MyOutMode>
+      </PropertyGroup>
+    </When>
+	<When Condition="$([System.Convert]::ToBoolean($(IS_TRACE)))">
+      <!-- debug macroses -->
+      <PropertyGroup Label="UserMacros">
+        <MyOutMode>trace</MyOutMode>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <!-- other/release macroses -->
+      <PropertyGroup Label="UserMacros">
+        <MyOutMode>release</MyOutMode>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+  <PropertyGroup Label="UserMacros">
+	<MyOutDir>$(SolutionDir)bin\bin_$(MyOutMode)_windows_$(ARCH)_$(VSSufix)\</MyOutDir>
+	<MyIntDir>$(SolutionDir)bin\obj_$(MyOutMode)_windows_$(ARCH)_$(VSSufix)\$(TargetName)\</MyIntDir>
+  </PropertyGroup>
+	  
+  <PropertyGroup>
+    <OutDir>$(MyOutDir)</OutDir>
+	<IntDir>$(MyIntDir)</IntDir>
+	<LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  
+  <ItemDefinitionGroup>
+	 <ClCompile>
+	   <ProgramDataBaseFileName>$(MyIntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+	   <PreprocessorDefinitions>MSWIN_OS</PreprocessorDefinitions>
+	 </ClCompile>
+	 <Link>
+	 </Link>
+  </ItemDefinitionGroup>
+  
+</Project>
