@@ -29,11 +29,11 @@ namespace frameMP
 {
 struct SWinInfo
 {
-    Display *m_disp;
+    void *m_disp;
     int m_scrNum;
     bool m_isDeskTop;
     HWND m_hRoot, m_hWnd, m_hPar;
-    SWinInfo(Display *disp = NULL, int scrNum = -1, HWND hRoot = NULL, HWND hWnd = NULL, 
+    SWinInfo(void *disp = NULL, int scrNum = -1, HWND hRoot = NULL, HWND hWnd = NULL, 
                 HWND hPar = NULL) 
         : m_disp(disp), m_scrNum(scrNum), m_isDeskTop(false), 
           m_hRoot(hRoot), m_hWnd(hWnd), m_hPar(hPar)
@@ -126,7 +126,7 @@ class CWndBase : public CMsgSource, public TInstCounter<CWndBase>
     static CWndBase s_staticInit;
     protected:
         // variables
-        typedef list<Display*> DispList;
+        typedef list<void*> DispList;
         typedef map<Str, WORD> XKeyMap;
 
         HWND	m_hWnd,
@@ -182,7 +182,7 @@ class CWndBase : public CMsgSource, public TInstCounter<CWndBase>
         SRect GetWndRect();
         BOOL SetWndRect(const SRect &rc);
 
-        PrcId GetWindowPrcId();
+        DWORD GetWindowPrcId();
         
         virtual BOOL Create(LPCTSTR wndDefaultText, HWND hPar=NULL, LPCTSTR className=NULL){return FALSE;}
         virtual BOOL OnWndMsg(UINT &uMsg, WPARAM &wParam, LPARAM &lParam);

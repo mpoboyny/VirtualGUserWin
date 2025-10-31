@@ -18,12 +18,6 @@
 
 // error.hxx
 
-#if defined(MSWIN_OS)
-#	include "win.hxx"
-#elif defined(LINUX_OS)
-#	include "lin.hxx"
-#endif
-
 #include "str.hxx"
 #include "tools.hxx"
 #include <map>

@@ -24,12 +24,8 @@
 #include "mp.hxx"
 #include <list>
 
-// more includes for _tgetcwd declaration
-#ifdef _WIN32
-#	define MP_PATH_SEP _T('\\')
-#elif defined(LINUX_OS)
-#	define MP_PATH_SEP _T('/')
-#endif
+#define MP_PATH_SEP _T('\\')
+
 
 #define MP_MSPATH_SEP _T('\\')
 #define MP_NXPATH_SEP _T('/')
@@ -38,25 +34,14 @@
 
 #define MP_BAD_FILE -1
 
-#ifdef _WIN32 
-#	define MP_S_READ _S_IREAD
-#	define MP_S_WRITE _S_IWRITE
+#define MP_S_READ _S_IREAD
+#define MP_S_WRITE _S_IWRITE
 
-#	define MP_O_BINARY _O_BINARY
-#	define MP_O_RDONLY _O_RDONLY
-#	define MP_O_RDWR _O_RDWR
-#	define MP_O_CREATE _O_CREAT
-#   define MP_O_TRUNC _O_TRUNC
-#elif defined(LINUX_OS)
-#	define MP_S_READ S_IRUSR
-#	define MP_S_WRITE S_IWUSR
-
-#	define MP_O_BINARY 0
-#	define MP_O_RDONLY O_RDONLY
-#	define MP_O_RDWR O_RDWR
-#	define MP_O_CREATE O_CREAT
-#   define MP_O_TRUNC O_TRUNC
-#endif
+#define MP_O_BINARY _O_BINARY
+#define MP_O_RDONLY _O_RDONLY
+#define MP_O_RDWR _O_RDWR
+#define MP_O_CREATE _O_CREAT
+#define MP_O_TRUNC _O_TRUNC
 
 namespace frameMP 
 {
@@ -99,8 +84,7 @@ namespace frameMP
         static inline bool Close(int fd);
 		static size_t ReadFileToStr(const Str& filePath, StrA& str);
     };
-    #include "file.inl"
-#
+
 }; // namespace frameMP
 
 #endif // _MPFILE_HXX_

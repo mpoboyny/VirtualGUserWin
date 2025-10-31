@@ -21,21 +21,6 @@
     <None Include="source\makefile">
       <Filter>source</Filter>
     </None>
-    <None Include="source\prcLin.inl">
-      <Filter>source</Filter>
-    </None>
-    <None Include="source\prcWin.inl">
-      <Filter>source</Filter>
-    </None>
-    <None Include="source\wndLin.inl">
-      <Filter>source</Filter>
-    </None>
-    <None Include="source\wndWin.inl">
-      <Filter>source</Filter>
-    </None>
-    <None Include="include\file.inl">
-      <Filter>include</Filter>
-    </None>
     <None Include="include\Lua\luaObj.inl">
       <Filter>include\Lua</Filter>
     </None>
@@ -85,9 +70,6 @@
     <ClInclude Include="include\file.hxx">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\lin.hxx">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\mathTools.hxx">
       <Filter>include</Filter>
     </ClInclude>
@@ -103,16 +85,10 @@
     <ClInclude Include="include\str.hxx">
       <Filter>include</Filter>
     </ClInclude>
-    <ClInclude Include="include\tcharLin.hxx">
-      <Filter>include</Filter>
-    </ClInclude>
     <ClInclude Include="include\tools.hxx">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\trace.hxx">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\win.hxx">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\wnd.hxx">

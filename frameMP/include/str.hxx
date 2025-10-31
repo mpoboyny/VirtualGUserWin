@@ -29,21 +29,7 @@
 namespace frameMP 
 {
 	using namespace std;
-#	ifdef _WIN32 
-#		include <tchar.h>
-#   else
-#   	include "tcharLin.hxx"
-#	endif
-#	ifndef TCHAR
-#		ifdef _UNICODE
-#			define TCHAR wchar_t
-#		else
-#			define TCHAR char
-#		endif
-#	endif
-#   ifndef LPCTSTR
-#		define LPCTSTR const TCHAR*
-#	endif 
+#	
 	typedef basic_string <wchar_t>        StrW;
 	typedef basic_istringstream<wchar_t>  InStrW;
 	typedef basic_ostringstream<wchar_t>  OutStrW;
@@ -56,14 +42,6 @@ namespace frameMP
 	typedef basic_istringstream<TCHAR> InStr;
 	typedef basic_ostringstream<TCHAR> OutStr;
 	
-#	ifndef _T
-#		ifdef _UNICODE
-#			define _T(str) L##str
-#		else
-#			define _T(str) (str)
-#		endif
-#	endif
-
 	StrA StrToStrA(const Str &inStr);
 	Str StrAToStr(const StrA &inStr);
 	StrW StrToStrW(const Str &inStr);

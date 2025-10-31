@@ -21,32 +21,36 @@
 #ifndef _MP_HXX_
 #define _MP_HXX_
 
+#define WINVER 0x0601       // Specifies Windows 7
+#define _WIN32_WINNT 0x0601 // Specifies Windows 7
+
+#ifndef UNICODE
+#	define UNICODE
+#endif
+#ifndef _UNICODE
+#	define _UNICODE
+#endif
+
+
+#include <windows.h>
+#include <tchar.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <algorithm>
-
-#ifndef __GNUC__
-#	pragma warning( disable : 4267 )
-#	pragma warning( disable : 4244 )
-#	pragma warning( disable : 4311 )
-#	pragma warning( disable : 4312 )
-#	pragma warning( disable : 4996 )
-#endif // __GNUC__
-
-namespace frameMP 
-{
-}; // namespace frameMP
-
-#if defined(MSWIN_OS)
-#	include "win.hxx"
-#elif defined(LINUX_OS)
-#	include "lin.hxx"
-#endif
+#include <direct.h>
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <io.h>
 
 #include "str.hxx"
 #include "trace.hxx"
 #include "error.hxx"
 #include "tools.hxx"
+
+
+namespace frameMP 
+{
+}; // namespace frameMP
 
 #endif //_MP_HXX_

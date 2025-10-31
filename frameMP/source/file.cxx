@@ -205,4 +205,35 @@ size_t SFile::ReadFileToStr(const Str& filePath, StrA& str)
 	return fSize;
 }
 
+int SFile::Open(const Str& fileToOpen, int oflag, int pmode)
+{
+#ifdef _WIN32
+    return _wopen(StrToStrW(fileToOpen).c_str(), oflag, pmode);
+#elif defined(LINUX_OS)
+    return open(StrToStrA(fileToOpen).c_str(), oflag, pmode);
+#endif
+}
+
+size_t SFile::Read(int fd, void* buffer, size_t count)
+{
+    return _read(fd, buffer, count);
+}
+
+int SFile::Write(int fd, void* buffer, size_t count)
+{
+    return _write(fd, buffer, count);
+}
+
+bool SFile::Close(int fd)
+{
+    return !!_close(fd);
+}
+
+size_t SFile::GetFileSize(int fd)
+{
+    size_t iSize = _lseek(fd, 0, SEEK_END);
+    _lseek(fd, 0, SEEK_SET);
+    return iSize;
+}
+
 }; // namespace frameMP
