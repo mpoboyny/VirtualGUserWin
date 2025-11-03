@@ -16,11 +16,6 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-// error.hxx
-
-#include "str.hxx"
-#include "tools.hxx"
-#include <map>
 
 #ifndef _MPERROR_HXX_
 #define _MPERROR_HXX_

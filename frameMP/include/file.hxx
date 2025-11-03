@@ -21,19 +21,13 @@
 #ifndef _MPFILE_HXX_
 #define _MPFILE_HXX_
 
-#include "mp.hxx"
-#include <list>
-
 #define MP_PATH_SEP _T('\\')
-
-
 #define MP_MSPATH_SEP _T('\\')
 #define MP_NXPATH_SEP _T('/')
 
 #define MP_MAX_PATH 1024
 
 #define MP_BAD_FILE -1
-
 #define MP_S_READ _S_IREAD
 #define MP_S_WRITE _S_IWRITE
 
@@ -41,7 +35,7 @@
 #define MP_O_RDONLY _O_RDONLY
 #define MP_O_RDWR _O_RDWR
 #define MP_O_CREATE _O_CREAT
-#define MP_O_TRUNC _O_TRUNC
+# define MP_O_TRUNC _O_TRUNC
 
 namespace frameMP 
 {
@@ -75,6 +69,7 @@ namespace frameMP
 			static Str GetTmpFilePath();
 			static void RemoveAllTmpFiles();
     };
+
     struct SFile
     {
         static inline int Open(const Str &fileToOpen, int oflag = MP_O_RDONLY | MP_O_BINARY, int pmode = MP_S_READ);
@@ -84,7 +79,7 @@ namespace frameMP
         static inline bool Close(int fd);
 		static size_t ReadFileToStr(const Str& filePath, StrA& str);
     };
-
+#
 }; // namespace frameMP
 
 #endif // _MPFILE_HXX_

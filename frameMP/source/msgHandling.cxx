@@ -19,7 +19,7 @@
 // msgHandling.cxx
 
 
-#include <msgHandling.hxx>
+#include <frameMP/msgHandling.hxx>
 
 namespace frameMP
 {

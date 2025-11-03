@@ -21,36 +21,50 @@
 #ifndef _MP_HXX_
 #define _MP_HXX_
 
-#define WINVER 0x0601       // Specifies Windows 7
-#define _WIN32_WINNT 0x0601 // Specifies Windows 7
-
-#ifndef UNICODE
-#	define UNICODE
-#endif
-#ifndef _UNICODE
-#	define _UNICODE
-#endif
-
-
-#include <windows.h>
-#include <tchar.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <algorithm>
+#include <map>
+#include <cmath>
+#include <list>
+
+#ifndef WINVER
+#	define WINVER 0x0501
+#endif
+#ifndef _WIN32_WINNT
+#	define _WIN32_WINNT 0x0501
+#endif
+#ifndef _WIN32_IE
+#	define _WIN32_IE 0x0600
+#endif
+
+#ifndef UNICODE
+#   define UNICODE
+#endif
+
+#ifndef _UNICODE
+#   define _UNICODE
+#endif
+
+#include <tchar.h>
 #include <direct.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <io.h>
-
-#include "str.hxx"
-#include "trace.hxx"
-#include "error.hxx"
-#include "tools.hxx"
-
+#include <windows.h>
 
 namespace frameMP 
 {
+    typedef unsigned char UCHAR;
+    typedef void* Display;
+    typedef HANDLE PrcToken;
+    typedef DWORD  PrcId;
 }; // namespace frameMP
+
+#include "str.hxx"
+#include "trace.hxx"
+#include "tools.hxx"
+#include "error.hxx"
 
 #endif //_MP_HXX_

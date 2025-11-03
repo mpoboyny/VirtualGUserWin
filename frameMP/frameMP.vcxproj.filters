@@ -12,15 +12,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="source\fileLin.inl">
-      <Filter>source</Filter>
-    </None>
-    <None Include="source\fileWIn.inl">
-      <Filter>source</Filter>
-    </None>
-    <None Include="source\makefile">
-      <Filter>source</Filter>
-    </None>
     <None Include="include\Lua\luaObj.inl">
       <Filter>include\Lua</Filter>
     </None>
@@ -89,9 +80,6 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\trace.hxx">
-      <Filter>include</Filter>
-    </ClInclude>
-    <ClInclude Include="include\wnd.hxx">
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="include\Lua\lua.hxx">

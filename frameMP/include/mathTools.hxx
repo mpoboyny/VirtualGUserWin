@@ -16,11 +16,6 @@
 // Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 
-// mathTools.hxx
-
-#include "mp.hxx"
-#include <cmath>
-
 #ifndef _MATHTOOLS_HXX_
 #define _MATHTOOLS_HXX_
 

@@ -18,8 +18,8 @@
 
 // app.cxx
 
-#include <app.hxx>
-#include <file.hxx>
+#include <frameMP/app.hxx>
+#include <frameMP/file.hxx>
 
 namespace frameMP {
 

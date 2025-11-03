@@ -18,9 +18,9 @@
 
 // mathTools.cxx
 
-#include <mathTools.hxx>
-#include <tools.hxx>
-#include <file.hxx>
+#include <frameMP/mathTools.hxx>
+#include <frameMP/tools.hxx>
+#include <frameMP/file.hxx>
 
 #include <assert.h>
 

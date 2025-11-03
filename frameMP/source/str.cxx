@@ -33,7 +33,7 @@ StrA StrToStrA(const Str &inStr)
 		int nLenOfInStr = WideCharToMultiByte(CP_OEMCP, 0, (LPCWSTR)inStr.c_str(), -1, NULL, 0, NULL, NULL);
 		char *pMultiByteStr = (char*)HeapAlloc(GetProcessHeap(), 0, nLenOfInStr);
 		WideCharToMultiByte(CP_OEMCP, 0, (LPCWSTR)inStr.c_str(), -1, pMultiByteStr, nLenOfInStr, NULL, NULL);
-		back = pMultiByteStr? pMultiByteStr: "";
+		back = pMultiByteStr;
 		HeapFree(GetProcessHeap(), 0, pMultiByteStr);
 	}
 	return back;
@@ -49,7 +49,7 @@ Str StrAToStr(const StrA &inStr)
 		int nLenOfWideCharStr = MultiByteToWideChar(CP_ACP, 0, (LPCSTR)inStr.c_str(), -1, NULL, 0);
 		wchar_t *pWideCharStr = (wchar_t*)HeapAlloc(GetProcessHeap(), 0, nLenOfWideCharStr * sizeof(wchar_t));
 		MultiByteToWideChar(CP_ACP, 0, (LPCSTR)inStr.c_str(), -1, pWideCharStr, nLenOfWideCharStr);
-		back = pWideCharStr? pWideCharStr: L"";
+		back = pWideCharStr;
 		HeapFree(GetProcessHeap(), 0, pWideCharStr);
 	}
 	return back;

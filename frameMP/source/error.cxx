@@ -19,6 +19,7 @@
 // error.cxx
 
 #include <mp.hxx>
+#include <error.hxx>
 
 #define DEF_MPERROR_STR	_T("Unknown error.")
 

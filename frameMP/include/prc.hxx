@@ -29,19 +29,19 @@ namespace frameMP
 class CPrc
 {
     static const unsigned s_defIdleWaitSec = 1;
-    HANDLE m_token;
-    DWORD	 m_pid;
+    PrcToken m_token;
+    PrcId	 m_pid;
     inline bool CleanUp();
     public:
         CPrc();
-        CPrc(HANDLE token);
-        CPrc(DWORD pid);
+        CPrc(PrcToken token);
+        CPrc(PrcId pid);
         CPrc(const CPrc &rhs);
         void operator=(const CPrc& rhs);
         virtual ~CPrc();
 
-        DWORD GetPid() { return m_pid; }
-        HANDLE GetToken() { return m_token; }
+        PrcId GetPid() { return m_pid; }
+        PrcToken GetToken() { return m_token; }
 
 		bool ExecuteFile(const Str &cmdLine);
 		bool Create(const Str &cmdLine, const Str &param, const Str &file, bool waitForIdle = true);

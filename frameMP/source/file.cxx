@@ -18,7 +18,14 @@
 
 // file.cxx
 
+#include <mp.hxx>
 #include <file.hxx>
+
+#pragma warning(disable: 4996)
+
+#pragma push_macro("_CRT_SECURE_NO_WARNINGS")  
+#undef _CRT_SECURE_NO_WARNINGS  
+
 #define TMP_FILE_PREF TEXT("FMP")
 
 
@@ -54,13 +61,9 @@ Str CPath::NormalizePathSeps(const TCHAR *osPath)
 {
     Str back;
     TCHAR replaceSep = MP_PATH_SEP;
-#ifdef _WIN32
     TCHAR searchSep = MP_NXPATH_SEP;
-#else
-    TCHAR searchSep = MP_MSPATH_SEP;
-#endif
     TCHAR *newPath = _tcsdup(osPath);
-    for (int i=0, iCount = _tcslen(newPath); i < iCount; ++i) {
+    for (size_t i=0, iCount = _tcslen(newPath); i < iCount; ++i) {
         if (newPath[i] == searchSep) newPath[i] = replaceSep;
     }
     back = newPath? newPath: _T("ups, bad path format ?");
@@ -185,43 +188,86 @@ Str CPath::GetFullPath(const Str &path)
     return CPath(path.c_str()).GetFullPath();
 }
 
-#if defined(MSWIN_OS)
-#	include "fileWin.inl"
-#elif defined(LINUX_OS)
-#	include "fileLin.inl"
-#endif
-
-
-size_t SFile::ReadFileToStr(const Str& filePath, StrA& str)
+bool CPath::IsFile()
 {
-	int fd = Open(filePath.c_str());
-	size_t fSize = GetFileSize(fd);
-	TrRet(fd <= 0 || fSize < 1, 0);
-	TDel<char> pFileBuf(new char[fSize + 1]);
-	TrRet(SFile::Read(fd, *pFileBuf, fSize) < 1, 0);
-	(*pFileBuf)[fSize] = '\0';
-	str = *pFileBuf;
-	Close(fd);
-	return fSize;
+    WIN32_FIND_DATA ffd;
+    HANDLE hFind = FindFirstFile(m_orgPath, &ffd);
+    TrRet(hFind == INVALID_HANDLE_VALUE, false);
+    FindClose(hFind);
+    return !(ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
+}
+
+bool CPath::IsDir()
+{
+    WIN32_FIND_DATA ffd;
+    HANDLE hFind = FindFirstFile(m_orgPath, &ffd);
+    TrRet(hFind == INVALID_HANDLE_VALUE, false);
+    FindClose(hFind);
+    return !!(ffd.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY);
+}
+
+Str CPath::GetFullPath() const
+{
+    static const DWORD dBufsize = 4096;
+    TCHAR  buffer[dBufsize] = TEXT("");
+    TCHAR** lppPart = { NULL };
+    DWORD  retval = GetFullPathName(m_orgPath, dBufsize, buffer, lppPart);
+    if (retval > 0) {
+        return Str(buffer);
+    }
+    return Str();
+}
+
+Str CPath::GetTmpFilePath()
+{
+    Str res;
+    TCHAR lpTempPathBuffer[MAX_PATH];
+    TCHAR szTempFileName[MAX_PATH];
+    DWORD dwRetVal = GetTempPath(MAX_PATH, lpTempPathBuffer);
+    TrRet((dwRetVal > MAX_PATH || dwRetVal == 0), res);
+    UINT   uRetVal = GetTempFileName(lpTempPathBuffer, TMP_FILE_PREF, 0, szTempFileName);
+    TrRet(uRetVal == 0, res);
+    res = szTempFileName;
+    return res;
+}
+
+void CPath::RemoveAllTmpFiles()
+{
+    TCHAR lpTempPathBuffer[MAX_PATH];
+    DWORD dwRetVal = GetTempPath(MAX_PATH, lpTempPathBuffer);
+    TrVoid((dwRetVal > MAX_PATH || dwRetVal == 0));
+    TrVar(lpTempPathBuffer);
+    Str searchPath = lpTempPathBuffer;
+    searchPath += '*';
+    WIN32_FIND_DATA findFileData;
+    HANDLE hFind = FindFirstFile(searchPath.c_str(), &findFileData);
+    TrVoid(hFind == INVALID_HANDLE_VALUE);
+    do {
+        if (_tcsnccmp(findFileData.cFileName, TMP_FILE_PREF, _tcslen(TMP_FILE_PREF)) == 0) {
+            TCHAR fullPath[MAX_PATH];
+            _sntprintf(fullPath, sizeof(fullPath), TEXT("%s\\%s"), lpTempPathBuffer, findFileData.cFileName);
+            if (!DeleteFile(fullPath)) {
+                Tr(TEXT("Error while deleting: ") << fullPath);
+            }
+        }
+    } while (FindNextFile(hFind, &findFileData) != 0);
+
+    FindClose(hFind);
 }
 
 int SFile::Open(const Str& fileToOpen, int oflag, int pmode)
 {
-#ifdef _WIN32
     return _wopen(StrToStrW(fileToOpen).c_str(), oflag, pmode);
-#elif defined(LINUX_OS)
-    return open(StrToStrA(fileToOpen).c_str(), oflag, pmode);
-#endif
 }
 
 size_t SFile::Read(int fd, void* buffer, size_t count)
 {
-    return _read(fd, buffer, count);
+    return _read(fd, buffer, (unsigned)count);
 }
 
 int SFile::Write(int fd, void* buffer, size_t count)
 {
-    return _write(fd, buffer, count);
+    return _write(fd, buffer, (unsigned)count);
 }
 
 bool SFile::Close(int fd)
@@ -236,4 +282,20 @@ size_t SFile::GetFileSize(int fd)
     return iSize;
 }
 
+size_t SFile::ReadFileToStr(const Str& filePath, StrA& str)
+{
+	int fd = Open(filePath.c_str());
+	size_t fSize = GetFileSize(fd);
+	TrRet(fd <= 0 || fSize < 1, 0);
+	TDel<char> pFileBuf(new char[fSize + 1]);
+	TrRet(SFile::Read(fd, *pFileBuf, fSize) < 1, 0);
+	(*pFileBuf)[fSize] = '\0';
+	str = *pFileBuf;
+	Close(fd);
+	return fSize;
+}
+
 }; // namespace frameMP
+
+#pragma pop_macro("_CRT_SECURE_NO_WARNINGS")
+

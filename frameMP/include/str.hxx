@@ -29,7 +29,6 @@
 namespace frameMP 
 {
 	using namespace std;
-#	
 	typedef basic_string <wchar_t>        StrW;
 	typedef basic_istringstream<wchar_t>  InStrW;
 	typedef basic_ostringstream<wchar_t>  OutStrW;
