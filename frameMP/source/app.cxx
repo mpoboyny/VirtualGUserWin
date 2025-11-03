@@ -18,8 +18,7 @@
 
 // app.cxx
 
-#include <frameMP/app.hxx>
-#include <frameMP/file.hxx>
+#include <app.hxx>
 
 namespace frameMP {
 
@@ -74,10 +73,19 @@ bool CApp::Initialize(int argc, char *argv[])
 	return true;
 }
 
-#if defined(MSWIN_OS)
-#	include "appWin.inl"
-#elif defined(LINUX_OS)
-#	include "appLin.inl"
-#endif
+bool CApp::GetCurrWorkDir(Str& dir)
+{
+	TCHAR tmpPath[MP_MAX_PATH] = { 0 };
+	if (_tgetcwd(tmpPath, MP_MAX_PATH)) {
+		dir = tmpPath;
+		return true;
+	}
+	return false;
+}
+
+bool CApp::SetCurrWorkDir(const TCHAR* dir)
+{
+	return !!_tchdir(dir);
+}
 
 }; // namespace frameMP

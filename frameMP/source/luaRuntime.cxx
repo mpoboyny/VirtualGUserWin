@@ -18,8 +18,8 @@
 
 // luaRuntime.cxx
 
-#include <frameMP/Lua/luaRuntime.hxx>
-#include <frameMP/Lua/luaObj.hxx>
+#include <Lua/luaRuntime.hxx>
+#include <Lua/luaObj.hxx>
 #include <lua.hxx>
 
 namespace frameMP {

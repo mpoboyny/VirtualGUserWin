@@ -18,10 +18,10 @@
 
 // luaRt.cxx
 
-#include <frameMP/Lua/luaRuntime.hxx>
-#include <frameMP/Lua/luaRtObj.hxx>
-#include <frameMP/app.hxx>
-#include <frameMP/file.hxx>
+#include <Lua/luaRuntime.hxx>
+#include <Lua/luaRtObj.hxx>
+#include <app.hxx>
+#include <file.hxx>
 
 // #define LUART(data) ((CLuaRtObj*)(data->m_luaObj))->m_prc
 

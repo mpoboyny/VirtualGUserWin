@@ -72,11 +72,11 @@ namespace frameMP
 
     struct SFile
     {
-        static inline int Open(const Str &fileToOpen, int oflag = MP_O_RDONLY | MP_O_BINARY, int pmode = MP_S_READ);
-        static inline size_t Read(int fd, void *buffer, size_t count);
-        static inline int Write(int fd, void *buffer, size_t count);
-        static inline size_t GetFileSize(int fd);
-        static inline bool Close(int fd);
+        static int Open(const Str &fileToOpen, int oflag = MP_O_RDONLY | MP_O_BINARY, int pmode = MP_S_READ);
+        static size_t Read(int fd, void *buffer, size_t count);
+        static int Write(int fd, void *buffer, size_t count);
+        static size_t GetFileSize(int fd);
+        static bool Close(int fd);
 		static size_t ReadFileToStr(const Str& filePath, StrA& str);
     };
 #

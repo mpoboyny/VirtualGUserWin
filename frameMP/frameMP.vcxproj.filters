@@ -94,5 +94,8 @@
     <ClInclude Include="include\Lua\luaRuntime.hxx">
       <Filter>include\Lua</Filter>
     </ClInclude>
+    <ClInclude Include="include\wnd.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

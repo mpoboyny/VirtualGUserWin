@@ -28,6 +28,8 @@
 #include <map>
 #include <cmath>
 #include <list>
+#include <vector>
+#include <stack>
 
 #ifndef WINVER
 #	define WINVER 0x0501

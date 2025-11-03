@@ -17,9 +17,9 @@
 //
 
 // prc.hxx
-#include "mp.hxx"
-#include "wnd.hxx"
 
+#include <mp.hxx>
+#include <wnd.hxx>
 
 #ifndef _MPPRC_HXX_
 #define _MPPRC_HXX_
@@ -36,8 +36,6 @@ class CPrc
         CPrc();
         CPrc(PrcToken token);
         CPrc(PrcId pid);
-        CPrc(const CPrc &rhs);
-        void operator=(const CPrc& rhs);
         virtual ~CPrc();
 
         PrcId GetPid() { return m_pid; }

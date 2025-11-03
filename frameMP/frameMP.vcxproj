@@ -70,6 +70,7 @@
     <ClInclude Include="include\str.hxx" />
     <ClInclude Include="include\tools.hxx" />
     <ClInclude Include="include\trace.hxx" />
+    <ClInclude Include="include\wnd.hxx" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{823CA639-070E-43D4-AA17-EED7FD7A58F6}</ProjectGuid>

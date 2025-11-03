@@ -20,9 +20,7 @@
 
 #include "mp.hxx"
 #include "file.hxx"
-#include <list>
-#include <vector>
-#include <wnd.hxx>
+
 
 #ifndef _APP_HXX_
 #define _APP_HXX_
@@ -30,6 +28,8 @@
 
 namespace frameMP 
 {
+
+class CWndBase;
 
 class CApp  : public TSingl<CApp>
 {
