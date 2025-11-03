@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{5753bc1c-92a9-4264-8c70-441993dee685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{ba187bc4-038e-405d-a24a-2064d87b9739}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\main.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\luaWnd.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\luaWndGrabber.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\luaPrc.hxx">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\main.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\luaPrc.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\luaWnd.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\luaWndGrabber.cxx">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LICENSE" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Readme.txt" />
+    <Text Include="versionVGU.txt" />
+  </ItemGroup>
+</Project>

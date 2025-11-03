@@ -1,1 +1,6 @@
+VirtualGUserWin-1.3.5
+
 Windows edition of VirtualGUser
+
+With best regards,
+M.Pobojnyj
