@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="UserMacros">
+	<LUA_VERSION>$([System.IO.File]::ReadAllText("$(SolutionDir)versionLUA.txt"))</LUA_VERSION>
+    <FRAMEMP_VERSION>$([System.IO.File]::ReadAllText("$(SolutionDir)versionFMP.txt"))</FRAMEMP_VERSION>
+	<VGU_VERSION>$([System.IO.File]::ReadAllText("$(SolutionDir)versionVGU.txt"))</VGU_VERSION>
+	
+	<!--IsDebug: search for 'Debug' in Configuration-->
+    <IS_DEBUG>$([System.Convert]::ToString( $([System.Text.RegularExpressions.Regex]::IsMatch($(Configuration), '[Dd]ebug'))))</IS_DEBUG>
+	<!--IsTrace: search for 'Trace' in Configuration-->
+    <IS_TRACE>$([System.Convert]::ToString( $([System.Text.RegularExpressions.Regex]::IsMatch($(Configuration), '[Tt]race'))))</IS_TRACE>
+
+    <!--Platform-->
+    <ARCH Condition="'$(Platform)' == 'Win32'">x86</ARCH>
+    <ARCH Condition="'$(Platform)' == 'x64'">x64</ARCH>
+	
+	<!--VSSufix-->
+	<VSSufix>vs</VSSufix>
+	
+    <!--Folders-->
+	<LUA_DIR>lua-$(LUA_VERSION)</LUA_DIR>
+	
+	<!--Bin names-->
+	<LuaLibName>lua-$(LUA_VERSION)</LuaLibName>
+	<LuaIntName>luai-$(LUA_VERSION)</LuaIntName>
+	<LuaCmpName>luac-$(LUA_VERSION)</LuaCmpName>
+	<FrameMPlibName>frameMP-$(FRAMEMP_VERSION)</FrameMPlibName>
+  </PropertyGroup>
+
+  
+  <Choose>
+    <When Condition="$([System.Convert]::ToBoolean($(IS_DEBUG)))">
+      <!-- debug macroses -->
+      <PropertyGroup Label="UserMacros">
+        <MyOutMode>debug</MyOutMode>
+      </PropertyGroup>
+    </When>
+	<When Condition="$([System.Convert]::ToBoolean($(IS_TRACE)))">
+      <!-- debug macroses -->
+      <PropertyGroup Label="UserMacros">
+        <MyOutMode>trace</MyOutMode>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <!-- other/release macroses -->
+      <PropertyGroup Label="UserMacros">
+        <MyOutMode>release</MyOutMode>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+
+  <PropertyGroup Label="UserMacros">
+	<MyOutDir>$(SolutionDir)bin\bin_$(MyOutMode)_windows_$(ARCH)_$(VSSufix)\</MyOutDir>
+	<MyIntDir>$(SolutionDir)bin\obj_$(MyOutMode)_windows_$(ARCH)_$(VSSufix)\$(TargetName)\</MyIntDir>
+  </PropertyGroup>
+	  
+  <PropertyGroup>
+    <OutDir>$(MyOutDir)</OutDir>
+	<IntDir>$(MyIntDir)</IntDir>
+	<LinkIncremental>false</LinkIncremental>
+	<BuildLog>
+      <Path>$(IntDir)$(TargetName).log</Path>
+    </BuildLog>
+  </PropertyGroup>
+  
+  <ItemDefinitionGroup>
+	 <ClCompile>
+	   <ProgramDataBaseFileName>$(MyIntDir)$(TargetName).pdb</ProgramDataBaseFileName>
+	 </ClCompile>
+	 <Link>
+	 </Link>
+  </ItemDefinitionGroup>
+  
+</Project>
