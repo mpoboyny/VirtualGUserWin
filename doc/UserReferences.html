@@ -1,0 +1,739 @@
+<html>
+<head>
+	<title>VirtualGUser-1.3.5</title>
+	<style type="text/css">
+		ul {list-style-type: none;}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		var luaInd="./lua-5.0.2/contents.html"
+		function writeFu(fuName, fuParams)
+		{
+			document.write("<table width=100% border=0 cellspacing=0 cellpadding=0><tr bgcolor='#e6e6fa'>");
+			document.write("<td align='left'><a name='", fuName, "'><code>&nbsp;&nbsp;", fuName, "(", fuParams, ")</code></a></td>");
+			document.write("<td align='right'><a href=#pageHome>home</a>&nbsp;&nbsp;</td>");
+			document.write("</tr></table>");
+		}
+	</script>
+	<h3 align=center><a name='pageHome'>VirtualGUser-1.3.5</a></h3>
+	<p align=left>Copyright © 2024 Mykhaylo Poboynyy (GPL version 2.1 or later)</p>
+	<h4 align=center>User references</h4>
+	<hr>
+	<ol>
+		<li><a href=#ReleaseNote>VirtualGUser-1.3.5, what is it?</a></li>
+		<br><li><a href=#Examples>Examples of use</a></li>
+		<br><li><a href=#Lua>Lua references</a></li>
+		<br><li><a href=#MPWindow>MPWindow - library</a></li>
+		<table width=100% border=0 cellspacing=0 cellpadding=0>
+			<tr>
+				<td>
+					<ul><li><a href=#getAllParent>getAllParent</a></li></ul>
+					<ul><li><a href=#setGeometry>setGeometry</a></li></ul>
+					<ul><li><a href=#getGeometry>getGeometry</a></li></ul>
+					<ul><li><a href=#clickWindowR>clickWindowR</a></li></ul>
+					<ul><li><a href=#clickWindowL>clickWindowL</a></li></ul>
+					<ul><li><a href=#clickWindowDL>clickWindowDL</a></li></ul>
+					<ul><li><a href=#mouseMove>mouseMove</a></li></ul>
+					<ul><li><a href=#setText>setText</a></li></ul>
+					<ul><li><a href=#printText>printText</a></li></ul>
+					<ul><li><a href=#getText>getText</a></li></ul>
+					<ul><li><a href=#getClipboardText>getClipboardText</a></li></ul>
+				</td>
+				<td>
+					<ul><li><a href=#keyUp>keyUp</a></li></ul>
+					<ul><li><a href=#keyDown>keyDown</a></li></ul>
+					<ul><li><a href=#keyType>keyType</a></li></ul>
+					<ul><li><a href=#getProcess>getProcess</a></li></ul>
+					<ul><li><a href=#getAllChild>getAllChild</a></li></ul>
+                    <ul><li><a href=#getAllZOrder>getAllZOrder</a></li></ul>
+					<ul><li><a href=#getAllChildFromPoint>getAllChildFromPoint</a></li></ul>
+					<ul><li><a href=#getChildByClassName>getChildByClassName</a></li></ul>
+					<ul><li><a href=#getClassName>getClassName</a></li></ul>
+					<ul><li><a href=#findWindowByTitle>findWindowByTitle</a></li></ul>
+					<ul><li><a href=#findWindowByTextInTitle>findWindowByTextInTitle</a></li></ul>
+				</td>
+				<td>
+					<ul><li><a href=#startMouseRec>startMouseRec</a></li></ul>
+					<ul><li><a href=#getId>getId</a></li></ul>
+					<ul><li><a href=#activateWindow>activateWindow</a></li></ul>
+					<ul><li><a href=#activateWindowEx>activateWindowEx</a></li></ul>
+					<ul><li><a href=#getActivWindow>getActivWindow</a></li></ul>
+					<ul><li><a href=#getDesktopWindow>getDesktopWindow</a></li></ul>
+					<ul><li><a href=#showDesktopWindow>showDesktopWindow</a></li></ul>
+					<ul><li><a href=#isDesktop>isDesktop</a></li></ul>
+					<ul><li><a href=#saveScreenShot>saveScreenShot</a></li></ul>
+					<ul><li><a href=#cmpScreenShotWithBmp>cmpScreenShotWithBmp</a></li></ul>
+					<ul><li><a href=#saveScreenShotEx>saveScreenShotEx</a></li></ul>
+				</td>
+				<td>
+					<ul><li><a href=#cmpScreenShotWithBmpEx>cmpScreenShotWithBmpEx</a></li></ul>
+					<ul><li><a href=#clickWindowExL>clickWindowExL</a></li></ul>
+					<ul><li><a href=#clickWindowExR>clickWindowExR</a></li></ul>
+					<ul><li><a href=#clickWindowExDL>clickWindowExDL</a></li></ul>
+					<ul><li><a href=#clickWindowExDR>clickWindowExDR</a></li></ul>
+					<ul><li><a href=#mouseLMove>mouseLMove</a></li></ul>
+					<ul><li><a href=#mouseRMove>mouseRMove</a></li></ul>
+					<ul><li><a href=#setTesseractPath>setTesseractPath</a></li></ul>
+					<ul><li><a href=#getTextFromImgFile>getTextFromImgFile</a></li></ul>
+					<ul><li><a href=#getScreenShotText>getScreenShotText</a></li></ul>
+					<ul><li><a href=#minimizeWindow>minimizeWindow</a></li></ul>
+					<ul><li><a href=#maximizeWindow>maximizeWindow</a></li></ul>
+				</td>
+			</tr>
+		</table>
+		<br><li><a href=#MPProcess>MPProcess - library</a></li>
+		<table width=100% border=0 cellspacing=0 cellpadding=0>
+			<tr>
+				<td>
+					<ul><li><a href=#getPrcMainWindow>getPrcMainWindow</a></li></ul>
+					<ul><li><a href=#getPrcAllTopWindows>getPrcAllTopWindows</a></li></ul>
+					<ul><li><a href=#getPrcId>getPrcId</a></li></ul>
+					<ul><li><a href=#isPrcRunning>isPrcRunning</a></li></ul>
+					<ul><li><a href=#terminatePrc>terminatePrc</a></li></ul>
+					<ul><li><a href=#createPrc>createPrc</a></li></ul>
+					<ul><li><a href=#executeFile>executeFile</a></li></ul>
+					<ul><li><a href=#close>close</a></li></ul>
+				</td>
+			</tr>
+		</table>
+		<br><li><a href=#MPRuntime>MPRuntime - library</a></li>
+		<table width=100% border=0 cellspacing=0 cellpadding=0>
+			<tr>
+				<td>
+					<ul><li><a href=#sleep>sleep</a></li></ul>
+					<ul><li><a href=#getAppArgv>getAppArgv</a></li></ul>
+					<ul><li><a href=#getAppName>getAppName</a></li></ul>
+					<ul><li><a href=#getOStype>getOStype</a></li></ul>
+				</td>
+			</tr>
+		</table>
+	</ol>
+	<hr>
+	<table width=100% border=0 cellspacing=0 cellpadding=0>
+		<tr>
+			<td>
+				<a name='ReleaseNote'><b>VirtualGUser-1.3.5, what is it?</b></a>
+			</td>
+			<td align='right'>
+				<a href=#pageHome>home</a>
+			</td>
+		</tr>
+	</table>
+	<p>
+		VirtualGUser-1.3.5 is graphical user input/output emulation tool. It emulate mouse and keyboard input, 
+		let you change position and size of window, run and kill process, get the text from text- controls and much more.
+		<br><br>
+		It can be used as testing and operation system GUI automation tool for desktop operating systems. 
+		VirtualGUser is implemented as Lua- script interpreter (version 5.02) with some additional 
+		libraries and functionality.
+		<br><br>
+		The Microsoft Windows and the UNIX like operation systems with X11 based desktop with 
+		"Extended Window Manager Hints" support are implemented yet (gnome, kde, ... etc.). 
+		The script interface is cross platform, 1 time written – on all supported platforms can be executed. 
+		<br><br>
+		The application work intern with native GUI objects (Window) and process. It can enumerate or find these 
+		objects based on title, relationships or desktop coordinates. It is implemented, simple to use, 
+		support to find out desktop coordinates.
+		You can work with desktop or only with some window. Every time it is possible to save screenshot of whole desktop 
+		or other window. You can also compare the screnshot of a window with saved bitmap. If <a href='https://github.com/tesseract-ocr' target='_blank'>tesseract OCR</a>
+		command line tool is avaliable, 
+		you can use build in functions to get text from image file or from screen short.
+		<br>You can run, test and kill all process with yours permissions. It is possible to find out the 
+		relationship between process and window.
+		<br><br>
+		The scripts depending only on software architecture of program that will be tested or 
+		software architecture of GUI on desktop of target operation system.
+		<br><br>
+		You do not need to use any foreign code in your software. You can test or automate foreign software.
+		<br><br>
+		It can be helpfully to show “End user” what is to do (like show me, support answer, tutorial creating) 
+		or in CI environment.
+		<br><br>
+		They are example scripts included. In the examples I show in simple form basics Ideas behind VirtualGUser.
+		<br><br>
+		If you need test or automation script, but you have no time, let us speak about.
+		<br><br>
+		The build of VirtualGUser is very simple. If you not found yours favorite operating system as binary download, 
+		try to do that.
+	</p>
+	<hr>
+	<table width=100% border=0 cellspacing=0 cellpadding=0>
+		<tr>
+			<td>
+				<a name='Examples'><b>Examples of use</b></a>
+			</td>
+			<td align='right'>
+				<a href=#pageHome>home</a>
+			</td>
+		</tr>
+	</table>
+	<p>
+		This examples are the files, which was used as test files during the development. 
+		I hope they will be usefully for you.
+	</p>
+	<p>
+		Usage: VirtualGUser-1.3.5 &lt;LUA FILE&gt; [-LUA FILE PARAMETER...]<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;LUA FILE PARAMETER - is optional. It can be more than 1 if any.
+	</p>
+	<dl>
+		<dt><a href='../examples/calc.lua' target='_blank'>calc.lua</a></dt>
+		<dd>It is the script to automate calculator on MSWindows and on UNIX like OS with GNOME desktop. 
+			It will try to find or run calc.exe or gcalctool. 
+			The script can handle command line arguments. It click the buttons and retrieve the result.
+		</dd>
+		<dt><a href='../examples/desk.lua' target='_blank'>desk.lua</a></dt>
+		<dd>
+			Cross platform script show desktop operation. It use coordinates recorded with recDesctop.lua.
+		</dd>
+		<dt><a href='../examples/editMain.lua' target='_blank'>editMain.lua</a></dt>
+		<dd>It is main file for default editor automation or testing. It call on MSWindows 
+			editWin.lua and on UNIX like OS editLin.lua.
+		</dd>
+		<dt><a href='../examples/editWin.lua' target='_blank'>editWin.lua</a></dt>
+		<dd>Search or run notepad.exe on MSWindows. Will be called from editMain.lua.</dd>
+		<dt><a href='../examples/editLin.lua' target='_blank'>editLin.lua</a></dt>
+		<dd>Search or run gedit on UNIX like OS with GNOME desktop. Will be called from editMain.lua.</dd>
+		<dt><a href='../examples/include.lua' target='_blank'>include.lua</a></dt>
+		<dd>In this file are some Lua function, which I use in other files.</dd>
+		<dt><a href='../examples/libInfo.lua' target='_blank'>libInfo.lua</a></dt>
+		<dd>This script enumerate all libraries and functions implemented by VirtualGUser.</dd>
+		<dt><a href='../examples/rec.lua' target='_blank'>rec.lua</a></dt>
+		<dd>The example record left mouse click position on calculator under MSWindows (calc.exe) 
+			and under UNIX like OS with GNOME desktop (gcalctool). The coordinates will be saved in recOut.txt.
+		</dd>
+		<dt><a href='../examples/recDesctop.lua' target='_blank'>recDesctop.lua</a></dt>
+		<dd>Same as rec.lua, but record the coordinates on desktop.</dd>
+		<dt><a href='../examples/screen.lua' target='_blank'>screen.lua</a></dt>
+		<dd>This script save screen shot and compare it whith saved.</dd>
+	</dl>
+	<hr>
+	<table width=100% border=0 cellspacing=0 cellpadding=0>
+		<tr>
+			<td>
+				<a name='Lua'><b>Lua references</b></a>
+			</td>
+			<td align='right'>
+				<a href=#pageHome>home</a>
+			</td>
+		</tr>
+	</table>
+	<p>
+		Lua language references for used version are 
+		<script type="text/javascript">
+			document.write("<a href='", luaInd, "' target='_blank'>here<a>");
+		</script>	
+	</p>
+	<hr>
+	<p><a name='MPWindow'><b>MPWindow - library</b></a></p>
+	<script type="text/javascript">writeFu("getAllParent", "mpwindow");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Table of MPWindow objects</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("setGeometry", "mpwindow, posX, posY, height, width");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>false if failed</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>posX - global position in display units</dd>
+		<dd>posY - global position in display units</dd>
+		<dd>height - height in  in display units</dd>
+		<dd>width - width in  in display units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getGeometry", "mpwindow");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>table with fields: 'posX', 'posY', 'width', 'height'</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("clickWindowR", "mpwindow, delay, posX, posY");</script>
+	<p>Click on window with right mouse button.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>void</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>delay(optional) - delay in second betwen mouse down und mouse up</dd>
+		<dd>posX(optional) - window position in window units</dd>
+		<dd>posY(optional) - window position in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("clickWindowL", "mpwindow, delay, posX, posY");</script>
+	<p>Click on window with left mouse button.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>void</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>delay(optional) - delay in second betwen mouse down und mouse up</dd>
+		<dd>posX(optional) - window position in window units</dd>
+		<dd>posY(optional) - window position in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("clickWindowDL", "mpwindow, posX, posY");</script>
+	<p>Double click on window with left mouse button.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>void</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>posX(optional) - window position in window units</dd>
+		<dd>posY(optional) - window position in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("mouseMove", "mpwindow, posX, posY");</script>
+	<p><i>Warning, UNIX like OS</i>. Internally is used XWarpPointer (xlib) function. This function have on some distributions strange behavior, 
+		mouse is moved but GUI is not always updated.
+	</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>void</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>posX - window position in window units</dd>
+		<dd>posY - window position in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("setText", "mpwindow, text");</script>
+	<p>Set the text in the window.<br><i>Warning, UNIX like OS</i>. Only on Microsoft Windows is implemented yet.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>false if failed</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>text - string to set</dd>
+	</dl>
+	<script type="text/javascript">writeFu("printText", "mpwindow, text");</script>
+	<p>Type the text in the window. Following control characters are supported on UNIX like OS:
+	<ul>
+		<li>'\n' - Return</li>
+		<li>'\x1b' - Escape</li>
+		<li>'\x08' - BackSpace</li>
+		<li>'\t' - Tab</li>
+		<li>'\xff' - Delete</li>
+		<li>'\x14' - Scroll_Lock</li>
+	</ul>
+	On Microsoft Windows will native support used.</p> 
+	<dl>
+		<dt>Return:</dt>
+		<dd>false if failed</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>text - string to set</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getText", "mpwindow");</script>
+	<p>Get the text from the window.<br><i>Warning, UNIX like OS</i>. Internally is X11 clipboard (XA_PRIMARY) used to retrieve the text.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>string</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getClipboardText", "");</script>
+	<p>Get text from OS clipboard.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>string</dd>
+	</dl>
+	<script type="text/javascript">writeFu("keyUp", "mpwindow, array");</script>
+	<p>Emulate key up event from keyboard.<br>The alpha and digit characters are the same strings.
+		Here is the list of supported keys:<br>
+		'Shift', 'Ctrl', 'Alt', 'LeftShift', 'RightShift',  'LeftCtrl', 'RightCtrl', 'LeftAlt', 'RightAlt',     
+		'NumLock', 'ScrolLock', 'Tab', 'Back', 'Clear', 'Return', 'Space', 'Pause', 'Escape',       
+		'PageUp', 'PageDown', 'Home', 'End' 'KeyUp', 'KeyDown', 'KeyLeft', 'KeyRight', 'Print', 'PrintScreen',  
+		'CapsLock', 'CtrlBreak', 'Insert', 'Delete'.
+	<br>On Microsoft Windows are 'LeftWin' and 'RightWin' supported too.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>false if failed</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>array - of keyNames in the form {'Key1', 'Key2', ...}</dd>
+	</dl>
+	<script type="text/javascript">writeFu("keyDown", "mpwindow, array");</script>
+	<p>Emulate key down event from keyboard.<br>The alpha and digit characters are the same strings.
+		Here is the list of supported keys:<br>
+		'Shift', 'Ctrl', 'Alt', 'LeftShift', 'RightShift',  'LeftCtrl', 'RightCtrl', 'LeftAlt', 'RightAlt',     
+		'NumLock', 'ScrolLock', 'Tab', 'Back', 'Clear', 'Return', 'Space', 'Pause', 'Escape',       
+		'PageUp', 'PageDown', 'Home', 'End' 'KeyUp', 'KeyDown', 'KeyLeft', 'KeyRight', 'Print', 'PrintScreen',  
+		'CapsLock', 'CtrlBreak', 'Insert', 'Delete'.
+	<br>On Microsoft Windows are 'LeftWin' and 'RightWin' supported too.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>false if failed</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>array - of keyNames in the form {'Key1', 'Key2', ...}</dd>
+	</dl>
+	<script type="text/javascript">writeFu("keyType", "mpwindow, array");</script>
+	<p>Emulate type event from keyboard.<br>The alpha and digit characters are the same strings.
+		Here is the list of supported keys:<br>
+		'Shift', 'Ctrl', 'Alt', 'LeftShift', 'RightShift',  'LeftCtrl', 'RightCtrl', 'LeftAlt', 'RightAlt',     
+		'NumLock', 'ScrolLock', 'Tab', 'Back', 'Clear', 'Return', 'Space', 'Pause', 'Escape',       
+		'PageUp', 'PageDown', 'Home', 'End' 'KeyUp', 'KeyDown', 'KeyLeft', 'KeyRight', 'Print', 'PrintScreen',  
+		'CapsLock', 'CtrlBreak', 'Insert', 'Delete'.
+	<br>On Microsoft Windows are 'LeftWin' and 'RightWin' supported too.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>false if failed</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>array - of keyNames in the form {'Key1', 'Key2', ...}</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getProcess", "mpwindow");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>MPProcess object</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getAllChild", "mpwindow");</script>
+    <p><i>Warning, UNIX like OS</i>. Only on Microsoft Windows is implemented yet.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Table of MPWindow objects</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+    <script type="text/javascript">writeFu("getAllZOrder", "mpwindow");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Table of MPWindow objects</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getAllChildFromPoint", "mpwindow, posX, posY");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Table of MPWindow objects</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>posX - window position in window units</dd>
+		<dd>posY - window position in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getChildByClassName", "mpwindow, string");</script>
+	<p>On Microsoft Windows it can be for example "Button" to find all buttons. on *NIX - this function is less usefull, 
+		while class names are some thing another
+	</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Table of MPWindow objects</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>string - Class name</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getClassName", "mpwindow");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>class name as string</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("findWindowByTitle", "string");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Table of MPWindow objects</dd>
+		<dt>Parameters:</dt>
+		<dd>string - Exact title to find</dd>
+	</dl>
+	<script type="text/javascript">writeFu("findWindowByTextInTitle", "string");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Table of MPWindow objects</dd>
+		<dt>Parameters:</dt>
+		<dd>string - String that title contain</dd>
+	</dl>
+	<script type="text/javascript">writeFu("startMouseRec", "mpwindow, activateFlag, callBack");</script>
+	<p>It is the helper function to found out of coordinates on the screen or window. The function return after 
+		left mouse click or on 'Escape'. The last parameter is Lua function name. The function will be called 
+		after mouse click with 2 parameters: x and y coordinates of mouse click.
+	</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>true, if user click with mouse on mpwindow</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>activateFlag - optional, if set to false, do not activate window bevor grab click, default true</dd>
+		<dd>callBack - Lua function, that will be called after mouse click.</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getId", "mpwindow");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>on Microsoft Windows - window HANDLE as int</dd>
+		<dd>on UNIX like OS - X11 Window as int</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("activateWindow", "mpwindow");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>false if failed</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("activateWindowEx", "mpwindow");</script>
+	<p>Same as activateWindow, but work like ALT + TAB</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>false if failed</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getActivWindow", "");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getDesktopWindow", "");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>MPWindow object of desktop window</dd>
+	</dl>
+	<script type="text/javascript">writeFu("showDesktopWindow", "");</script>
+	<p>Minimize all top window</p>
+	<script type="text/javascript">writeFu("isDesktop", "mpwindow");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>true, if mpwindow is desktop window</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("saveScreenShot", "mpwindow, filePath");</script>
+	<p>Save a screen shot of given window as bitmap image (Device Independent Bitmap, *.bmp)</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>true, if screen shot of mpwindow is successfully saved</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>filePath - file path of screen shot</dd>
+	</dl>
+	<script type="text/javascript">writeFu("cmpScreenShotWithBmp", "mpwindow, filePath, soft");</script>
+	<p>Fast compare screen shot of given window with bitmap image (Device Independent Bitmap, *.bmp) in filePath</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Equal ratio, if screen shot and bitmap are equal return value is 100</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>filePath - file path to bmp file</dd>
+		<dd>soft(optional) - if true, while compare the size of bitmaps will not checked. Biggest bitmap will crop to size of smallest bitmap. Color setting from smallest bitmap will used.</dd>
+	</dl>
+	<script type="text/javascript">writeFu("saveScreenShotEx", "mpwindow, filePath, posX, posY, width, height");</script>
+	<p>Save a screen shot part of given window as bitmap image (Device Independent Bitmap, *.bmp)</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>true, if screen shot of mpwindow is successfully saved</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>filePath - file path of screen shot</dd>
+		<dd>posX - position in window units</dd>
+		<dd>posY - position in window units</dd>
+		<dd>width - width in window units</dd>
+		<dd>height - height in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("cmpScreenShotWithBmpEx", "mpwindow, filePath, posX, posY, width, height, soft");</script>
+	<p>Fast compare screen shot part of given window with bitmap image (Device Independent Bitmap, *.bmp) in filePath</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Equal ratio, if screen shot and bitmap are equal return value is 100</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>filePath - file path to bmp file</dd>
+		<dd>posX - position in window units</dd>
+		<dd>posY - position in window units</dd>
+		<dd>width - width in window units</dd>
+		<dd>height - height in window units</dd>
+		<dd>soft(optional) - if true, while compare the size of bitmaps will not checked. Biggest bitmap will crop to size of smallest bitmap. Color setting from smallest bitmap will used.</dd>
+	</dl>
+	<script type="text/javascript">writeFu("clickWindowExL", "mpwindow, posX, posY");</script>
+	<p>Click on window with left mouse button. Internal use other API calls as clickWindowL.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>void</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>posX - window position in window units</dd>
+		<dd>posY - window position in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("clickWindowExR", "mpwindow, posX, posY");</script>
+	<p>Click on window with right mouse button. Internal use other API calls as clickWindowR.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>void</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>posX - window position in window units</dd>
+		<dd>posY - window position in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("clickWindowExDL", "mpwindow, posX, posY");</script>
+	<p>Double click on window with left mouse button. Internal use other API calls as clickWindowL.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>void</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>posX - window position in window units</dd>
+		<dd>posY - window position in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("clickWindowExDR", "mpwindow, posX, posY");</script>
+	<p>Double click on window with right mouse button. Internal use other API calls as clickWindowL.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>void</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>posX - window position in window units</dd>
+		<dd>posY - window position in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("mouseLMove", "mpwindow, xOffset, yOffset");</script>
+	<p>Click on window with left mouse button and move mouse with pressed button. Than release it. The mouse is moved from current position.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>void</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>xOffset - number of units to move</dd>
+		<dd>yOffset - number of units to move</dd>
+	</dl>
+	<script type="text/javascript">writeFu("mouseRMove", "mpwindow, xOffset, yOffset");</script>
+	<p>Click on window with right mouse button and move mouse with pressed button. Than release it. The mouse is moved from current position.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>void</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>xOffset - number of units to move</dd>
+		<dd>yOffset - number of units to move</dd>
+	</dl>
+	<script type="text/javascript">writeFu("setTesseractPath", "fullPath", "tesseractOptions");</script>
+	<p>Set intern path to tesseract ocr tool.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>true if succeed</dd>
+		<dt>Parameters:</dt>
+		<dd>fullPath - full path to tesseract ocr tool to use</dd>
+		<dd>tesseractOptions(optional) - tesseract option to use (default --psm 6)</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getTextFromImgFile", "imgFilePath");</script>
+	<p>Get text from image file.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Text</dd>
+		<dt>Parameters:</dt>
+		<dd>imgFilePath - image file path</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getScreenShotText", "mpwindow", "posX", "posY", "width", "height");</script>
+	<p>Get text from screen shot part of given window.</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Text</dd>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+		<dd>posX - position in window units</dd>
+		<dd>posY - position in window units</dd>
+		<dd>width - width in window units</dd>
+		<dd>height - height in window units</dd>
+	</dl>
+	<script type="text/javascript">writeFu("minimizeWindow", "mpwindow");</script>
+	<p>Minimize given window.</p>
+	<dl>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("maximizeWindow", "mpwindow");</script>
+	<p>Maximize given window.</p>
+	<dl>
+		<dt>Parameters:</dt>
+		<dd>mpwindow - MPWindow object</dd>
+	</dl>
+	<hr>
+	<p><a name='MPProcess'><b>MPProcess - library</b></a></p>
+	<script type="text/javascript">writeFu("getPrcMainWindow", "mpprocess");</script>
+	<p>Return first found toplevel window in process</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>MPWindow object</dd>
+		<dt>Parameters:</dt>
+		<dd>mpprocess - MPProcess object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getPrcAllTopWindows", "mpprocess");</script>
+	<p>Return all toplevel window in process</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Table of MPWindow objects</dd>
+		<dt>Parameters:</dt>
+		<dd>mpprocess - MPProcess object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getPrcId", "mpprocess");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Process id</dd>
+		<dt>Parameters:</dt>
+		<dd>mpprocess - MPProcess object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("isPrcRunning", "mpprocess");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>true or false</dd>
+		<dt>Parameters:</dt>
+		<dd>mpprocess - MPProcess object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("terminatePrc", "mpprocess");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>false, if process still runing</dd>
+		<dt>Parameters:</dt>
+		<dd>mpprocess - MPProcess object</dd>
+	</dl>
+	<script type="text/javascript">writeFu("createPrc", "cmdLine, parameters, file");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>MPProcess object</dd>
+		<dt>Parameters:</dt>
+		<dd>cmdLine - comannd line be used to create process</dd>
+		<dd>parameters - comannd line parameters</dd>
+		<dd>file - will be pasted to command line (for more info see man execvp, rarely necessary on UNIX like OS)</dd>
+	</dl>
+	<script type="text/javascript">writeFu("executeFile", "cmdLine");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>MPProcess object</dd>
+		<dt>Parameters:</dt>
+		<dd>cmdLine - comannd line to execute</dd>
+	</dl>
+	<script type="text/javascript">writeFu("close", "mpprocess");</script>
+	<p>On MS Windows it is necessary to close the process. If you do not do this, 
+		the isPrcRunning function will still return true, only if all handels to the process are closed, isPrcRunning
+		return on MS Windows false.
+	</p>
+	<dl>
+		<dt>Return:</dt>
+		<dd>true, if successfully</dd>
+		<dt>Parameters:</dt>
+		<dd>mpprocess - MPProcess object</dd>
+	</dl>
+	<hr>
+	<p><a name='MPRuntime'><b>MPRuntime - library</b></a></p>
+	<script type="text/javascript">writeFu("sleep", "seconds");</script>
+	<dl>
+		<dt>Parameters:</dt>
+		<dd>seconds - seconds to sleep</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getAppArgv", "");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Table of commad line arguments with virtualGUser was executed</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getAppName", "");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>Executable name of virtualGUser</dd>
+	</dl>
+	<script type="text/javascript">writeFu("getOStype", "");</script>
+	<dl>
+		<dt>Return:</dt>
+		<dd>on MS Windows - 'MSWINDOWS*'</dd>
+		<dd>UNIX like OS - '*NIX'</dd>
+	</dl>
+</body>
+</html>
