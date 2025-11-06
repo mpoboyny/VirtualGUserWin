@@ -19,7 +19,7 @@
 // luaWndGrabber.hxx
 
 #include <main.hxx>
-#include <frameMP/wnd.hxx>
+#include <wnd.hxx>
 
 #ifndef _LUAWNDGRABBER_HXX_
 #define _LUAWNDGRABBER_HXX_
@@ -29,7 +29,6 @@ class CLuaWndGrabber
 protected:
     CWndBase* m_wnd;
     BOOL m_bActivateWnd;
-    inline BOOL CreateGrabberWnd();
 public:
     CLuaWndGrabber(CWndBase* wnd, BOOL bActivateWnd = TRUE);
     virtual ~CLuaWndGrabber();

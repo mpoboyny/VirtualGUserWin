@@ -18,13 +18,13 @@
 
 // luaWnd.cxx
 
-#include <frameMP/Lua/luaRuntime.hxx>
+#include <Lua/luaRuntime.hxx>
 #include <luaWnd.hxx>
 #include <luaPrc.hxx>
 #include <luaWndGrabber.hxx>
-#include <frameMP/file.hxx>
-#include <frameMP/prc.hxx>
-#include <frameMP/tools.hxx>
+#include <file.hxx>
+#include <prc.hxx>
+#include <tools.hxx>
 #include <fstream>
 
 #define LUAWND(data) ((CLuaWnd*)(data->m_luaObj))->m_wnd

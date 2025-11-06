@@ -18,8 +18,8 @@
 
 // luaPrc.cxx
 
-#include <frameMP/Lua/luaRuntime.hxx>
-#include <frameMP/prc.hxx>
+#include <Lua/luaRuntime.hxx>
+#include <prc.hxx>
 #include <luaPrc.hxx>
 #include <luaWnd.hxx>
 

@@ -19,8 +19,8 @@
 // luaWnd.hxx
 
 #include <main.hxx>
-#include <frameMP/Lua/luaObj.hxx>
-#include <frameMP/wnd.hxx>
+#include <Lua/luaObj.hxx>
+#include <wnd.hxx>
 
 #ifndef _LUAWND_HXX_
 #define _LUAWND_HXX_

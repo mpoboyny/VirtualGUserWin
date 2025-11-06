@@ -18,10 +18,10 @@
 
 // main.cxx
 #include <main.hxx>
-#include <frameMP/app.hxx>
-#include <frameMP/file.hxx>
-#include <frameMP/Lua/luaRuntime.hxx>
-#include <frameMP/Lua/luaRtObj.hxx>
+#include <app.hxx>
+#include <file.hxx>
+#include <Lua/luaRuntime.hxx>
+#include <Lua/luaRtObj.hxx>
 #include "luaWnd.hxx"
 #include "luaPrc.hxx"
 

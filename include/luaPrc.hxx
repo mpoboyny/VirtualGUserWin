@@ -19,7 +19,7 @@
 // luaPrc.hxx
 
 #include <main.hxx>
-#include <frameMP/Lua/luaObj.hxx>
+#include <Lua/luaObj.hxx>
 
 #ifndef _LUAPRC_HXX_
 #define _LUAPRC_HXX_

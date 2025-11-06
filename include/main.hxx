@@ -18,7 +18,7 @@
 
 //main.hxx
 
-#include <frameMP/mp.hxx>
+#include <mp.hxx>
 
 #ifndef _MAIN_HXX_
 #define _MAIN_HXX_
