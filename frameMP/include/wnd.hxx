@@ -142,9 +142,9 @@ class CWndBase : public CMsgSource, public TInstCounter<CWndBase>
         //functions
         BOOL OnCreate();
         inline static WinInfoList FindWindowByTitleText(const TCHAR *title, EFindWindowWhat eWhat);
-#if defined(MSWIN_OS)
+
         static LRESULT WINAPI WndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
-#endif
+
         static inline void InitKeyNameToKey();
         inline BOOL KeyCodeDo(LPCTSTR code, unsigned flag); 
 
