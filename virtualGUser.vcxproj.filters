@@ -42,5 +42,7 @@
   <ItemGroup>
     <Text Include="Readme.txt" />
     <Text Include="versionVGU.txt" />
+    <Text Include="versionFMP.txt" />
+    <Text Include="versionLUA.txt" />
   </ItemGroup>
 </Project>
