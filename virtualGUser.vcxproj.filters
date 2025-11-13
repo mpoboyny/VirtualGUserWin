@@ -7,6 +7,9 @@
     <Filter Include="source">
       <UniqueIdentifier>{ba187bc4-038e-405d-a24a-2064d87b9739}</UniqueIdentifier>
     </Filter>
+    <Filter Include="res">
+      <UniqueIdentifier>{e34adb7f-97ed-401a-8603-fcaa8088276b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\main.hxx">
@@ -20,6 +23,9 @@
     </ClInclude>
     <ClInclude Include="include\luaPrc.hxx">
       <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="res\resource.h">
+      <Filter>res</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -44,5 +50,15 @@
     <Text Include="versionVGU.txt" />
     <Text Include="versionFMP.txt" />
     <Text Include="versionLUA.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res\virtualGUser.rc">
+      <Filter>res</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\virtuaGUser.ico">
+      <Filter>res</Filter>
+    </Image>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-VirtualGUserWin-1.3.5
+VirtualGUserWin
 
 Windows edition of VirtualGUser
 
