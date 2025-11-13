@@ -100,7 +100,7 @@ BOOL CVirtuaGUserWinRecorderDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Kleines Symbol verwenden
 
 	// TODO: Hier zusätzliche Initialisierung einfügen
-
+	this->SetWindowText(TARGETNAMESTR);
 	return TRUE;  // TRUE zurückgeben, wenn der Fokus nicht auf ein Steuerelement gesetzt wird
 }
 
