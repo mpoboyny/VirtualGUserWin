@@ -27,13 +27,13 @@
     <ClInclude Include="targetver.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>Headerdateien</Filter>
-    </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
     <ClInclude Include="Tools.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
   </ItemGroup>
