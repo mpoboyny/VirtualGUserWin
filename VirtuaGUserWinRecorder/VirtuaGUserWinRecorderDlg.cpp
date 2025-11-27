@@ -310,3 +310,37 @@ HCURSOR CVirtuaGUserWinRecorderDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
+
+BOOL CVirtuaGUserWinRecorderDlg::PreTranslateMessage(MSG* pMsg)
+{
+	// Check if the message is a key down event
+	if (pMsg->message == WM_KEYDOWN)
+	{
+		// Check if the key pressed is the ENTER key (VK_RETURN)
+		if (pMsg->wParam == VK_RETURN)
+		{
+			// Do NOT process the message, effectively stopping the Enter key 
+			// from triggering the default OnOK/dialog closure behavior.
+			return TRUE;
+		}
+
+		// Optional: Also check the ESCAPE key (VK_ESCAPE) 
+		// as a secondary way to block the closure.
+		if (pMsg->wParam == VK_ESCAPE)
+		{
+			return TRUE;
+		}
+	}
+
+	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+void CVirtuaGUserWinRecorderDlg::OnCancel()
+{
+    CDialogEx::OnCancel();
+}
+
+void CVirtuaGUserWinRecorderDlg::OnOK()
+{
+
+}

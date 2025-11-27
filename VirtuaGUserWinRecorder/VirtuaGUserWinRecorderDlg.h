@@ -12,6 +12,10 @@
 // 6. Implementiere die kleinen Helfer inline im Header (keine zusätzliche CPP-Datei nötig), kompakt und sicher für C++14.
 // 7. Keine Änderungen am Dialog-Owner/Initialisierung hier — der Dialog sollte das Control weiterhin wie bisher im Konstruktor initialisieren.
 
+// Zusätzlicher Planpunkt (aktuelle Änderung):
+// - Verhindere Schließen auf IDCANCEL/ESC für `CVirtuaGUserWinRecorderDlg` durch Überschreiben von `OnCancel()`.
+// - Implementierung inline: leer lassen (kein Aufruf von Basisklasse).
+
 // MyEditBrowseCtrl
 class CMyEditBrowseCtrl : public CMFCEditBrowseCtrl
 {
@@ -61,10 +65,17 @@ protected:
 	HICON m_hIcon;
 	CMyEditBrowseCtrl m_wndFolderEdit;
 
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
+
 	// Generierte Funktionen für die Meldungstabellen
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
+
+	virtual void OnCancel() override;
+    virtual void OnOK() override;
+
 	DECLARE_MESSAGE_MAP();
+
 };
