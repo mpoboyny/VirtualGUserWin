@@ -1,4 +1,3 @@
-
 // VirtuaGUserWinRecorderDlg.cpp: Implementierungsdatei
 //
 
@@ -7,11 +6,12 @@
 #include "VirtuaGUserWinRecorder.h"
 #include "VirtuaGUserWinRecorderDlg.h"
 #include "afxdialogex.h"
+#include "Resource.h"
+#include <shellapi.h> // Für DragQueryFile, DragFinish
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
-
 
 // CAboutDlg-Dialogfeld für Anwendungsbefehl "Info"
 
@@ -30,35 +30,187 @@ public:
 
 // Implementierung
 protected:
+	BOOL OnInitDialog();
 	DECLARE_MESSAGE_MAP()
+public:
+	CString m_ExeName;
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
+, m_ExeName(_T(""))
 {
+}
+
+BOOL CAboutDlg::OnInitDialog()
+{
+	CDialogEx::OnInitDialog();
+	this->SetWindowText(L"Information about " TARGETNAMESTR);
+	UpdateData(TRUE);
+	m_ExeName = TARGETNAMESTR;
+	UpdateData(FALSE);
+	return TRUE;
 }
 
 void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Text(pDX, IDC_STATIC_ABOUT, m_ExeName);
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 
-// CVirtuaGUserWinRecorderDlg-Dialogfeld
+// CMyEditBrowseCtrl
 
+void CMyEditBrowseCtrl::InitTooltip()
+{
+	// Erstelle Tooltip falls noch nicht vorhanden, binde das gesamte Control
+	if (!m_tooltip.m_hWnd)
+	{
+		// Create an empty tooltip control as a child of this control
+		if (m_tooltip.Create(this))
+		{
+			// Add the tool for the whole control; verwendet m_strTitle als Text
+			m_tooltip.AddTool(this, L"Drag and drop folder path hier");
+			m_tooltip.Activate(TRUE);
+		}
+	}
+}
 
+void CMyEditBrowseCtrl::PreSubclassWindow()
+{
+	CMFCEditBrowseCtrl::PreSubclassWindow();
+	// Control ist jetzt gebunden/subclassed => Tooltip initialisieren
+	InitTooltip();
+
+	// Drag & Drop für dieses Control aktivieren (Dateien/Ordner per Drag & Drop)
+	::DragAcceptFiles(GetSafeHwnd(), TRUE);
+}
+
+inline BOOL CMyEditBrowseCtrl::PreTranslateMessage(MSG* pMsg)
+{
+	// Leite Nachrichten an das Tooltip weiter (z.B. WM_MOUSEMOVE)
+	if (m_tooltip.m_hWnd)
+	{
+		m_tooltip.RelayEvent(pMsg);
+	}
+	return CMFCEditBrowseCtrl::PreTranslateMessage(pMsg);
+}
+
+void CMyEditBrowseCtrl::OnBrowse()
+{
+	// --- Step 1: Prepare the BROWSEINFO structure ---
+
+	BROWSEINFO bi = { 0 };
+	TCHAR szPath[MAX_PATH];
+	
+	// Set the flags for the dialog:
+	// BIF_EDITBOX: Ensures an edit box is present for typing the path.
+	// BIF_USENEWUI: Preferable, uses a resizable dialog with better features.
+	// BIF_RETURNONLYFSDIRS: Restricts selection to file system directories.
+	// BIF_NEWDIALOGSTYLE: Recommended for Win2K/XP and later.
+	bi.ulFlags = BIF_EDITBOX | BIF_RETURNONLYFSDIRS | BIF_NEWDIALOGSTYLE;
+
+	// Set the owner window and title
+	bi.hwndOwner = GetSafeHwnd();
+	bi.lpszTitle = m_strTitle.GetString();
+
+	// Setting lpfn to NULL effectively disables the callback, as requested.
+	bi.lpfn = NULL;
+
+	// --- Step 2: Call the Win32 function ---
+	LPITEMIDLIST pidl = SHBrowseForFolder(&bi);
+
+	// --- Step 3: Process the result ---
+	if (pidl != NULL)
+	{
+		// Convert the ITEMIDLIST to a file system path (using TCHAR types)
+		if (SHGetPathFromIDList(pidl, szPath))
+		{
+			// Update the edit control with the selected path
+			SetWindowText(szPath);
+		}
+		// Free the PIDL memory
+		CoTaskMemFree(pidl);
+	}
+
+	// The base class needs to be notified of the update if needed (optional)
+	// OnAfterUpdate(); 
+}
+
+// Message-Map für CMyEditBrowseCtrl
+BEGIN_MESSAGE_MAP(CMyEditBrowseCtrl, CMFCEditBrowseCtrl)
+	ON_WM_DROPFILES()
+END_MESSAGE_MAP()
+
+// Handler für Drag & Drop
+void CMyEditBrowseCtrl::OnDropFiles(HDROP hDropInfo)
+{
+	if (hDropInfo == NULL)
+	{
+		CMFCEditBrowseCtrl::OnDropFiles(hDropInfo);
+		return;
+	}
+
+	// Anzahl der gedroppten Elemente ermitteln
+	UINT uCount = ::DragQueryFile(hDropInfo, 0xFFFFFFFF, NULL, 0);
+	if (uCount == 0)
+	{
+		::DragFinish(hDropInfo);
+		CMFCEditBrowseCtrl::OnDropFiles(hDropInfo);
+		return;
+	}
+
+	// Wir verarbeiten nur das erste Element
+	TCHAR szPath[MAX_PATH] = { 0 };
+	if (::DragQueryFile(hDropInfo, 0, szPath, sizeof(szPath)/sizeof(szPath[0])))
+	{
+		// Prüfen, ob es ein Verzeichnis ist
+		DWORD dwAttr = ::GetFileAttributes(szPath);
+		if (dwAttr != INVALID_FILE_ATTRIBUTES && (dwAttr & FILE_ATTRIBUTE_DIRECTORY))
+		{
+			// Direktes Verzeichnis übernehmen
+			SetWindowText(szPath);
+		}
+		else
+		{
+			// Ist eine Datei: Parent-Ordner extrahieren und übernehmen
+			CString strPath(szPath);
+			int nPos = strPath.ReverseFind('\\');
+			if (nPos != -1)
+			{
+				strPath = strPath.Left(nPos);
+				SetWindowText(strPath);
+			}
+			else
+			{
+				// Fallback: ganze Zeichenkette übernehmen
+				SetWindowText(szPath);
+			}
+		}
+	}
+
+	::DragFinish(hDropInfo);
+
+	// Basisverhalten aufrufen
+	CMFCEditBrowseCtrl::OnDropFiles(hDropInfo);
+}
+
+// CVirtuaGUserWinRecorderDlg
 
 CVirtuaGUserWinRecorderDlg::CVirtuaGUserWinRecorderDlg(CWnd* pParent /*=nullptr*/)
-	: CDialogEx(IDD_VIRTUAGUSERWINRECORDER_DIALOG, pParent)
+: CDialogEx(IDD_VIRTUAGUSERWINRECORDER_DIALOG, pParent)
+, m_wndFolderEdit(L"Select work folder")
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
+	// m_wndFolderEdit.EnableFolderBrowseButton();
 }
 
 void CVirtuaGUserWinRecorderDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_MFC_EDIT_BROWSE_WORK_FOLDER, m_wndFolderEdit);
 }
 
 BEGIN_MESSAGE_MAP(CVirtuaGUserWinRecorderDlg, CDialogEx)
@@ -101,6 +253,12 @@ BOOL CVirtuaGUserWinRecorderDlg::OnInitDialog()
 
 	// TODO: Hier zusätzliche Initialisierung einfügen
 	this->SetWindowText(TARGETNAMESTR);
+
+	m_wndFolderEdit.EnableFolderBrowseButton();
+    CEdit *FolderEdit = static_cast<CEdit*>(&m_wndFolderEdit);
+    HWND hWndFolderEdit = FolderEdit->GetSafeHwnd();
+	::DragAcceptFiles(hWndFolderEdit, TRUE);
+
 	return TRUE;  // TRUE zurückgeben, wenn der Fokus nicht auf ein Steuerelement gesetzt wird
 }
 
@@ -152,4 +310,3 @@ HCURSOR CVirtuaGUserWinRecorderDlg::OnQueryDragIcon()
 {
 	return static_cast<HCURSOR>(m_hIcon);
 }
-

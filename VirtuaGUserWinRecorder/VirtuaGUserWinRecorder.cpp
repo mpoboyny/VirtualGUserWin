@@ -24,7 +24,6 @@ END_MESSAGE_MAP()
 CVirtuaGUserWinRecorderApp::CVirtuaGUserWinRecorderApp()
 {
 	// TODO: Hier Code zur Konstruktion einfügen
-	// Alle wichtigen Initialisierungen in InitInstance positionieren
 }
 
 
