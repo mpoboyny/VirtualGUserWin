@@ -38,6 +38,7 @@ protected:
 	// Relay von Nachrichten an Tooltip
 	virtual BOOL PreTranslateMessage(MSG* pMsg) override;
 	virtual void PreSubclassWindow() override;
+	virtual void OnDrawBrowseButton(CDC* pDC, CRect rect, BOOL bIsButtonPressed, BOOL bIsHighlighted) override;
 
 	afx_msg void OnDropFiles(HDROP hDropInfo);
 	DECLARE_MESSAGE_MAP()
@@ -64,18 +65,16 @@ public:
 protected:
 	HICON m_hIcon;
 	CMyEditBrowseCtrl m_wndFolderEdit;
+	CButton m_chkCleanWrkFolder;
 
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 	// Generierte Funktionen für die Meldungstabellen
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
-	afx_msg void OnPaint();
-	afx_msg HCURSOR OnQueryDragIcon();
 
 	virtual void OnCancel() override;
     virtual void OnOK() override;
 
 	DECLARE_MESSAGE_MAP();
-
 };

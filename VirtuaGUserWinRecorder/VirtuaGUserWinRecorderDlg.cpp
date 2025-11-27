@@ -13,7 +13,7 @@
 #define new DEBUG_NEW
 #endif
 
-// CAboutDlg-Dialogfeld für Anwendungsbefehl "Info"
+// CAboutDlg-dialogfeld für Anwendungsbefehl "Info"
 
 class CAboutDlg : public CDialogEx
 {
@@ -96,6 +96,27 @@ inline BOOL CMyEditBrowseCtrl::PreTranslateMessage(MSG* pMsg)
 		m_tooltip.RelayEvent(pMsg);
 	}
 	return CMFCEditBrowseCtrl::PreTranslateMessage(pMsg);
+}
+
+void CMyEditBrowseCtrl::OnDrawBrowseButton(CDC* pDC, CRect rect, BOOL bIsButtonPressed, BOOL bIsHighlighted)
+{
+	// Ensure the image list is valid
+	if (!m_ImageBrowse.GetSafeHandle())
+	{
+		return;
+	}
+
+	const int iconSize = 16;
+	const int x = rect.left + (rect.Width() - iconSize) / 2;
+	const int y = rect.top + (rect.Height() - iconSize) / 2;
+
+	UINT drawStyle = ILD_TRANSPARENT;
+
+	// Check if the control is disabled
+	if (!IsWindowEnabled()) {
+		drawStyle = ILD_BLEND50;  // Draw with 50% blend for a "disabled" effect
+	}
+	m_ImageBrowse.Draw(pDC, 0, CPoint(x, y), drawStyle);
 }
 
 void CMyEditBrowseCtrl::OnBrowse()
@@ -204,19 +225,17 @@ CVirtuaGUserWinRecorderDlg::CVirtuaGUserWinRecorderDlg(CWnd* pParent /*=nullptr*
 , m_wndFolderEdit(L"Select work folder")
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
-	// m_wndFolderEdit.EnableFolderBrowseButton();
 }
 
 void CVirtuaGUserWinRecorderDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_MFC_EDIT_BROWSE_WORK_FOLDER, m_wndFolderEdit);
+	DDX_Control(pDX, IDC_CHK_CLEAN_WORK_FOLDER, m_chkCleanWrkFolder);
 }
 
 BEGIN_MESSAGE_MAP(CVirtuaGUserWinRecorderDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
-	ON_WM_PAINT()
-	ON_WM_QUERYDRAGICON()
 END_MESSAGE_MAP()
 
 
@@ -259,6 +278,8 @@ BOOL CVirtuaGUserWinRecorderDlg::OnInitDialog()
     HWND hWndFolderEdit = FolderEdit->GetSafeHwnd();
 	::DragAcceptFiles(hWndFolderEdit, TRUE);
 
+    m_chkCleanWrkFolder.SetCheck(BST_CHECKED);
+
 	return TRUE;  // TRUE zurückgeben, wenn der Fokus nicht auf ein Steuerelement gesetzt wird
 }
 
@@ -273,42 +294,6 @@ void CVirtuaGUserWinRecorderDlg::OnSysCommand(UINT nID, LPARAM lParam)
 	{
 		CDialogEx::OnSysCommand(nID, lParam);
 	}
-}
-
-// Wenn Sie dem Dialogfeld eine Schaltfläche "Minimieren" hinzufügen, benötigen Sie
-//  den nachstehenden Code, um das Symbol zu zeichnen.  Für MFC-Anwendungen, die das 
-//  Dokument/Ansicht-Modell verwenden, wird dies automatisch ausgeführt.
-
-void CVirtuaGUserWinRecorderDlg::OnPaint()
-{
-	if (IsIconic())
-	{
-		CPaintDC dc(this); // Gerätekontext zum Zeichnen
-
-		SendMessage(WM_ICONERASEBKGND, reinterpret_cast<WPARAM>(dc.GetSafeHdc()), 0);
-
-		// Symbol in Clientrechteck zentrieren
-		int cxIcon = GetSystemMetrics(SM_CXICON);
-		int cyIcon = GetSystemMetrics(SM_CYICON);
-		CRect rect;
-		GetClientRect(&rect);
-		int x = (rect.Width() - cxIcon + 1) / 2;
-		int y = (rect.Height() - cyIcon + 1) / 2;
-
-		// Symbol zeichnen
-		dc.DrawIcon(x, y, m_hIcon);
-	}
-	else
-	{
-		CDialogEx::OnPaint();
-	}
-}
-
-// Die System ruft diese Funktion auf, um den Cursor abzufragen, der angezeigt wird, während der Benutzer
-//  das minimierte Fenster mit der Maus zieht.
-HCURSOR CVirtuaGUserWinRecorderDlg::OnQueryDragIcon()
-{
-	return static_cast<HCURSOR>(m_hIcon);
 }
 
 BOOL CVirtuaGUserWinRecorderDlg::PreTranslateMessage(MSG* pMsg)
