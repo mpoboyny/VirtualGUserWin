@@ -62,4 +62,40 @@ namespace Tools
         }
         return path;
     }
+
+    BOOL IsFolderEmpty(const CString& folderPath)
+    {
+        WIN32_FIND_DATA findFileData;
+        HANDLE hFind = INVALID_HANDLE_VALUE;
+
+        CString searchPath = folderPath;
+        if (!searchPath.IsEmpty() && searchPath.Right(1) != _T("\\"))
+            searchPath += _T("\\");
+        searchPath += _T("*");
+
+        hFind = FindFirstFile(searchPath, &findFileData);
+
+        if (hFind == INVALID_HANDLE_VALUE)
+            return TRUE; // Ordner existiert nicht oder ist leer
+
+        BOOL isEmpty = TRUE;
+        do
+        {
+            CString fileName = findFileData.cFileName;
+            if (fileName != _T(".") && fileName != _T(".."))
+            {
+                isEmpty = FALSE;
+                break;
+            }
+        } while (FindNextFile(hFind, &findFileData) != 0);
+
+        FindClose(hFind);
+        return isEmpty;
+    }
+
+    BOOL IsFolderExist(const CString& folderPath)
+    {
+        DWORD attrib = GetFileAttributes(folderPath);
+        return (attrib != INVALID_FILE_ATTRIBUTES && (attrib & FILE_ATTRIBUTE_DIRECTORY));
+    }
 }

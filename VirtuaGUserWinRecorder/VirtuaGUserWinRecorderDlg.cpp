@@ -232,10 +232,13 @@ void CVirtuaGUserWinRecorderDlg::DoDataExchange(CDataExchange* pDX)
 	CDialogEx::DoDataExchange(pDX);
 	DDX_Control(pDX, IDC_MFC_EDIT_BROWSE_WORK_FOLDER, m_wndFolderEdit);
 	DDX_Control(pDX, IDC_CHK_CLEAN_WORK_FOLDER, m_chkCleanWrkFolder);
+	DDX_Control(pDX, IDC_STC_OVERWRITE, m_stcOverwrite);
 }
 
 BEGIN_MESSAGE_MAP(CVirtuaGUserWinRecorderDlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
+	ON_WM_CTLCOLOR()
+	ON_BN_CLICKED(IDC_CHK_CLEAN_WORK_FOLDER, &CVirtuaGUserWinRecorderDlg::OnBnClickedChkCleanWorkFolder)
 END_MESSAGE_MAP()
 
 
@@ -279,6 +282,8 @@ BOOL CVirtuaGUserWinRecorderDlg::OnInitDialog()
 	::DragAcceptFiles(hWndFolderEdit, TRUE);
 
     m_chkCleanWrkFolder.SetCheck(BST_CHECKED);
+
+	m_stcOverwrite.ShowWindow(SW_HIDE);
 
 	return TRUE;  // TRUE zurückgeben, wenn der Fokus nicht auf ein Steuerelement gesetzt wird
 }
@@ -328,4 +333,30 @@ void CVirtuaGUserWinRecorderDlg::OnCancel()
 void CVirtuaGUserWinRecorderDlg::OnOK()
 {
 
+}
+
+HBRUSH CVirtuaGUserWinRecorderDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
+{
+	// Rufe Standardverhalten zuerst ab
+	HBRUSH hbr = CDialogEx::OnCtlColor(pDC, pWnd, nCtlColor);
+
+	// Sicherstellen, dass das Fenster gültig ist und mit unserem Control übereinstimmt
+	if (pWnd != nullptr && pWnd->GetSafeHwnd() == m_stcOverwrite.GetSafeHwnd())
+	{
+		// Textfarbe auf Rot setzen
+		pDC->SetTextColor(RGB(255, 0, 0));
+		// Hintergrund transparent zeichnen, damit Dialoghintergrund durchscheint
+		pDC->SetBkMode(TRANSPARENT);
+
+		// Rückgabe eines Null-Pinsel für transparenten Hintergrund
+		return (HBRUSH)::GetStockObject(NULL_BRUSH);
+	}
+
+	// Für alle anderen Controls das Standardverhalten beibehalten
+	return hbr;
+}
+
+void CVirtuaGUserWinRecorderDlg::OnBnClickedChkCleanWorkFolder()
+{
+	m_stcOverwrite.ShowWindow(m_chkCleanWrkFolder.GetCheck()? SW_HIDE: SW_SHOW);
 }

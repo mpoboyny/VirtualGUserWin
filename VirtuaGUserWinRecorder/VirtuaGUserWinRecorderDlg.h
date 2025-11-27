@@ -66,15 +66,19 @@ protected:
 	HICON m_hIcon;
 	CMyEditBrowseCtrl m_wndFolderEdit;
 	CButton m_chkCleanWrkFolder;
+	CStatic m_stcOverwrite;
 
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 	// Generierte Funktionen für die Meldungstabellen
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
 
 	virtual void OnCancel() override;
     virtual void OnOK() override;
 
 	DECLARE_MESSAGE_MAP();
+public:
+	afx_msg void OnBnClickedChkCleanWorkFolder();
 };

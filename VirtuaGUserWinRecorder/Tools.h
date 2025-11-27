@@ -10,4 +10,6 @@ namespace Tools
     CString GetModuleDirectory(HMODULE hModule);
     BOOL CreateDirectoryRecursive(const CString& path);
     CString GetUserDocumentsPath();
+    BOOL IsFolderExist(const CString& folderPath);
+    BOOL IsFolderEmpty(const CString& folderPath);
 }
