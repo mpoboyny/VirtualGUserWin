@@ -3,18 +3,7 @@
 
 #pragma once
 
-// Pseudocode / Plan (detailliert):
-// 1. Erweiterung von CMyEditBrowseCtrl um ein CToolTipCtrl-Feld `m_tooltip`.
-// 2. Initialisiere das Tooltip in `PreSubclassWindow`, weil das Control dann Subclassed/erzeugt ist.
-// 3. Implementiere `InitTooltip()` zur Erstellung, Hinzufügung des Tools (this) und Aktivierung.
-// 4. Überschreibe `PreTranslateMessage` und leite Events an `m_tooltip.RelayEvent` weiter, damit das Tooltip korrekt angezeigt wird.
-// 5. Belasse vorhandene `OnBrowse()`-Signatur; Tooltip verwendet den vorhandenen `m_strTitle` als Text.
-// 6. Implementiere die kleinen Helfer inline im Header (keine zusätzliche CPP-Datei nötig), kompakt und sicher für C++14.
-// 7. Keine Änderungen am Dialog-Owner/Initialisierung hier — der Dialog sollte das Control weiterhin wie bisher im Konstruktor initialisieren.
-
-// Zusätzlicher Planpunkt (aktuelle Änderung):
-// - Verhindere Schließen auf IDCANCEL/ESC für `CVirtuaGUserWinRecorderDlg` durch Überschreiben von `OnCancel()`.
-// - Implementierung inline: leer lassen (kein Aufruf von Basisklasse).
+#include "RichEditLogCtrl.h"
 
 // MyEditBrowseCtrl
 class CMyEditBrowseCtrl : public CMFCEditBrowseCtrl
@@ -68,6 +57,7 @@ protected:
 	CButton m_chkCleanWrkFolder;
 	CStatic m_stcOverwrite;
 	CEdit m_edWorkName;
+	CRichEditLogCtrl m_wndLog;
 
 protected:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);

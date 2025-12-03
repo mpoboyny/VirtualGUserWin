@@ -13,11 +13,10 @@
 
 #include <afxwin.h>         // MFC-Kern- und -Standardkomponenten
 #include <afxext.h>         // MFC-Erweiterungen
-
-
 #include <afxdisp.h>        // MFC-Automatisierungsklassen
 
-
+#include <ctime>
+#include <tchar.h>
 
 #ifndef _AFX_NO_OLE_SUPPORT
 #include <afxdtctl.h>           // MFC-Unterstützung für allgemeine Steuerelemente von Internet Explorer 4
@@ -28,13 +27,7 @@
 
 #include <afxcontrolbars.h>     // MFC-Unterstützung für Menübänder und Steuerleisten
 
-
-
-
-
-
-
-
+#include <afxrich.h> // Für AfxInitRichEdit2 / CRichEditCtrl
 
 #ifdef _UNICODE
 #if defined _M_IX86

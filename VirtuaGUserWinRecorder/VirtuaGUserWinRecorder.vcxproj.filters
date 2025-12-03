@@ -36,6 +36,9 @@
     <ClInclude Include="Resource.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="RichEditLogCtrl.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VirtuaGUserWinRecorder.cpp">
@@ -48,6 +51,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="Tools.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="RichEditLogCtrl.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

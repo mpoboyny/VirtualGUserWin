@@ -234,6 +234,7 @@ void CVirtuaGUserWinRecorderDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_CHK_CLEAN_WORK_FOLDER, m_chkCleanWrkFolder);
 	DDX_Control(pDX, IDC_STC_OVERWRITE, m_stcOverwrite);
 	DDX_Control(pDX, IDC_ED_WORK_NAME, m_edWorkName);
+	DDX_Control(pDX, IDC_RICHEDIT_LOG, m_wndLog);
 }
 
 BEGIN_MESSAGE_MAP(CVirtuaGUserWinRecorderDlg, CDialogEx)
@@ -335,7 +336,7 @@ void CVirtuaGUserWinRecorderDlg::OnCancel()
 
 void CVirtuaGUserWinRecorderDlg::OnOK()
 {
-	AfxMessageBox(L"CVirtuaGUserWinRecorderDlg::OnOK");
+	m_wndLog.AppendTimestampedLine(L"I do it!");
 }
 
 HBRUSH CVirtuaGUserWinRecorderDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)

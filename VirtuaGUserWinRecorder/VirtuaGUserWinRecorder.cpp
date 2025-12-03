@@ -48,6 +48,8 @@ BOOL CVirtuaGUserWinRecorderApp::InitInstance()
 
 	CWinApp::InitInstance();
 
+	// RichEdit initialisieren — notwendig, wenn Dialog RichEdit/CRichEditCtrl nutzt
+	AfxInitRichEdit2();
 
 	AfxEnableControlContainer();
 
