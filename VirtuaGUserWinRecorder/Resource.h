@@ -16,6 +16,8 @@
 #define IDC_STC_WORK                    1007
 #define IDC_RICHEDIT21                  1009
 #define IDC_RICHEDIT_LOG                1009
+#define IDR_COPY_PNG                    1010
+#define IDR_DELETE_PNG                  1011
 
 // Next default values for new objects
 // 
@@ -23,7 +25,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        131
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1010
+#define _APS_NEXT_CONTROL_VALUE         1012
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

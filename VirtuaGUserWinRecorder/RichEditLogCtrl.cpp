@@ -1,12 +1,73 @@
 #include "pch.h"
 #include "framework.h"
 #include "RichEditLogCtrl.h"
+#include <gdiplus.h>
+#include <string>
+#include <memory>
+#include <objidl.h>
+#include "Resource.h"
+#pragma comment(lib, "gdiplus.lib")
 
 #ifndef EM_GETREADONLY
 #define EM_GETREADONLY 0x00FF
 #endif
 
+using namespace Gdiplus;
+
 IMPLEMENT_DYNAMIC(CRichEditLogCtrl, CRichEditCtrl)
+
+// GDI+ Init (einmalig)
+static void EnsureGdiPlusInitialized()
+{
+    static bool gdiPlusInit = false;
+    static ULONG_PTR gdiPlusToken = 0;
+    if (!gdiPlusInit)
+    {
+        GdiplusStartupInput gdiplusStartupInput;
+        if (GdiplusStartup(&gdiPlusToken, &gdiplusStartupInput, nullptr) == Ok)
+            gdiPlusInit = true;
+    }
+}
+
+// Hilfsfunktion: PNG-Resource (RCDATA) in HBITMAP konvertieren
+static HBITMAP LoadPngResourceToHBITMAP(HINSTANCE hInst, int resId)
+{
+    EnsureGdiPlusInitialized();
+
+    HBITMAP hBmp = nullptr;
+    HRSRC hRes = ::FindResource(hInst, MAKEINTRESOURCE(resId), RT_RCDATA);
+    if (!hRes) return nullptr;
+    HGLOBAL hResData = ::LoadResource(hInst, hRes);
+    if (!hResData) return nullptr;
+    DWORD size = ::SizeofResource(hInst, hRes);
+    void* pData = ::LockResource(hResData);
+    if (!pData || size == 0) return nullptr;
+
+    IStream* pStream = nullptr;
+    if (CreateStreamOnHGlobal(NULL, TRUE, &pStream) != S_OK)
+        return nullptr;
+
+    ULONG written = 0;
+    HRESULT hr = pStream->Write(pData, (ULONG)size, &written);
+    if (FAILED(hr) || written != size)
+    {
+        pStream->Release();
+        return nullptr;
+    }
+
+    // Seek to beginning
+    LARGE_INTEGER liZero = {}; 
+    pStream->Seek(liZero, STREAM_SEEK_SET, NULL);
+
+    Bitmap* bmp = Bitmap::FromStream(pStream);
+    if (bmp && bmp->GetLastStatus() == Ok)
+    {
+        bmp->GetHBITMAP(Color::Transparent, &hBmp);
+    }
+    delete bmp;
+    pStream->Release();
+    return hBmp;
+}
 
 CRichEditLogCtrl::CRichEditLogCtrl()
 {
@@ -186,7 +247,33 @@ void CRichEditLogCtrl::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
     menu.EnableMenuItem(ID_DELETE_ALL, MF_BYCOMMAND | state);
     menu.EnableMenuItem(ID_COPY_ALL,   MF_BYCOMMAND | state);
 
+    // PNG aus Ressourcen laden (IDR_COPY_PNG und IDR_DELETE_PNG)
+    HBITMAP hBmpCopy = LoadPngResourceToHBITMAP(AfxGetResourceHandle(), IDR_COPY_PNG);
+    HBITMAP hBmpDel  = LoadPngResourceToHBITMAP(AfxGetResourceHandle(), IDR_DELETE_PNG);
+
+    if (hBmpCopy)
+    {
+        MENUITEMINFO mii = {};
+        mii.cbSize = sizeof(mii);
+        mii.fMask = MIIM_BITMAP;
+        mii.hbmpItem = hBmpCopy;
+        ::SetMenuItemInfo(menu.GetSafeHmenu(), ID_COPY_ALL, FALSE, &mii);
+    }
+    if (hBmpDel)
+    {
+        MENUITEMINFO mii = {};
+        mii.cbSize = sizeof(mii);
+        mii.fMask = MIIM_BITMAP;
+        mii.hbmpItem = hBmpDel;
+        ::SetMenuItemInfo(menu.GetSafeHmenu(), ID_DELETE_ALL, FALSE, &mii);
+    }   
+
     int cmd = menu.TrackPopupMenu(TPM_RETURNCMD | TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
+
+    // Cleanup: Bitmaps freigeben
+    if (hBmpCopy) ::DeleteObject(hBmpCopy);
+    if (hBmpDel)  ::DeleteObject(hBmpDel);
+
     if (cmd == ID_DELETE_ALL && len > 0)
     {
         Clear();

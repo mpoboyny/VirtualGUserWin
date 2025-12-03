@@ -71,5 +71,11 @@
     <Image Include="res\VirtuaGUserWinRecorder.ico">
       <Filter>Ressourcendateien</Filter>
     </Image>
+    <Image Include="res\Copy.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
+    <Image Include="res\Delete.png">
+      <Filter>Ressourcendateien</Filter>
+    </Image>
   </ItemGroup>
 </Project>

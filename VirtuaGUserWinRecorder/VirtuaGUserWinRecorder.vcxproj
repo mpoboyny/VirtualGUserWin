@@ -242,6 +242,8 @@
     <None Include="res\VirtuaGUserWinRecorder.rc2" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\Copy.png" />
+    <Image Include="res\Delete.png" />
     <Image Include="res\VirtuaGUserWinRecorder.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
