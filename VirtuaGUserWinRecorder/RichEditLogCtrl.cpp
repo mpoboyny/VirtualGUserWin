@@ -135,7 +135,7 @@ void CRichEditLogCtrl::AppendTimestampedLine(LPCTSTR pszText, LogType type)
     TCHAR timeBuf[64];
     _tcsftime(timeBuf, _countof(timeBuf), _T("%Y-%m-%d %H:%M:%S - "), &localTime);
     CString s = timeBuf;
-    s += pszText;
+    s += pszText ? pszText : _T("");
     AppendLine(s, type);
 }
 
@@ -158,15 +158,71 @@ void CRichEditLogCtrl::SetReadOnly(bool bReadOnly)
 
 BEGIN_MESSAGE_MAP(CRichEditLogCtrl, CRichEditCtrl)
     ON_WM_CONTEXTMENU()
+    ON_WM_SETCURSOR()
 END_MESSAGE_MAP()
+
+BOOL CRichEditLogCtrl::OnSetCursor(CWnd* /*pWnd*/, UINT /*nHitTest*/, UINT /*message*/)
+{
+    // Immer Standard-Pfeil setzen
+    ::SetCursor(::LoadCursor(NULL, IDC_ARROW));
+    return TRUE; // Nachricht behandelt
+}
 
 void CRichEditLogCtrl::OnContextMenu(CWnd* /*pWnd*/, CPoint point)
 {
     CMenu menu;
-    menu.CreatePopupMenu();
-    menu.AppendMenu(MF_STRING, 1, _T("Alle löschen"));
-    menu.AppendMenu(MF_STRING, 2, _T("Kopieren"));
+    if (!menu.CreatePopupMenu())
+        return;
+
+    const UINT ID_DELETE_ALL = 1;
+    const UINT ID_COPY_ALL   = 2;
+
+    menu.AppendMenu(MF_STRING, ID_DELETE_ALL, _T("Delete all"));
+    menu.AppendMenu(MF_STRING, ID_COPY_ALL,   _T("Copy all"));
+
+    // Disable both items when there is no text
+    int len = GetWindowTextLengthW();
+    UINT state = (len > 0) ? MF_ENABLED : (MF_GRAYED | MF_DISABLED);
+    menu.EnableMenuItem(ID_DELETE_ALL, MF_BYCOMMAND | state);
+    menu.EnableMenuItem(ID_COPY_ALL,   MF_BYCOMMAND | state);
+
     int cmd = menu.TrackPopupMenu(TPM_RETURNCMD | TPM_LEFTALIGN | TPM_RIGHTBUTTON, point.x, point.y, this);
-    if (cmd == 1) Clear();
-    else if (cmd == 2) Copy();
+    if (cmd == ID_DELETE_ALL && len > 0)
+    {
+        Clear();
+    }
+    else if (cmd == ID_COPY_ALL && len > 0)
+    {
+        CString text;
+        GetWindowText(text);
+
+        if (!::OpenClipboard(GetSafeHwnd()))
+            return;
+
+        ::EmptyClipboard();
+
+        SIZE_T bytes = (text.GetLength() + 1) * sizeof(wchar_t);
+        HGLOBAL hMem = ::GlobalAlloc(GMEM_MOVEABLE, bytes);
+        if (hMem)
+        {
+            void* pMem = ::GlobalLock(hMem);
+            if (pMem)
+            {
+                memcpy(pMem, (LPCWSTR)text.GetString(), bytes);
+                ::GlobalUnlock(hMem);
+
+                if (::SetClipboardData(CF_UNICODETEXT, hMem) == NULL)
+                {
+                    ::GlobalFree(hMem);
+                }
+                // bei Erfolg übernimmt die Zwischenablage das HGLOBAL
+            }
+            else
+            {
+                ::GlobalFree(hMem);
+            }
+        }
+
+        ::CloseClipboard();
+    }
 }
