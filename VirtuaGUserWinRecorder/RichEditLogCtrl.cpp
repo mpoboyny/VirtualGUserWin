@@ -48,16 +48,16 @@ void CRichEditLogCtrl::AppendLine(LPCTSTR pszText, LogType type)
     switch (type)
     {
     case LogType_Warning:
-        prefix = _T("[WARNING] ");
+        prefix = _T("[WARNING]:   ");
         cfNew.crTextColor = RGB(140, 80, 70); // dunkelrot / angepasst
         break;
     case LogType_Error:
-        prefix = _T("[ERROR] ");
+        prefix = _T("[ERROR]     :   ");
         cfNew.crTextColor = RGB(255, 0, 0); // rot
         break;
     case LogType_Info:
     default:
-        prefix = _T("[INFO] ");
+        prefix = _T("[INFO]        :   ");
         cfNew.crTextColor = RGB(0, 0, 0); // schwarz
         break;
     }
