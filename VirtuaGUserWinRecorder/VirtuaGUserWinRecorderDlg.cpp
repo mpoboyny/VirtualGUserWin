@@ -233,6 +233,7 @@ void CVirtuaGUserWinRecorderDlg::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_MFC_EDIT_BROWSE_WORK_FOLDER, m_wndFolderEdit);
 	DDX_Control(pDX, IDC_CHK_CLEAN_WORK_FOLDER, m_chkCleanWrkFolder);
 	DDX_Control(pDX, IDC_STC_OVERWRITE, m_stcOverwrite);
+	DDX_Control(pDX, IDC_ED_WORK_NAME, m_edWorkName);
 }
 
 BEGIN_MESSAGE_MAP(CVirtuaGUserWinRecorderDlg, CDialogEx)
@@ -285,6 +286,8 @@ BOOL CVirtuaGUserWinRecorderDlg::OnInitDialog()
 
 	m_stcOverwrite.ShowWindow(SW_HIDE);
 
+	m_edWorkName.SetWindowTextW(L"VGU_REC");
+
 	return TRUE;  // TRUE zurückgeben, wenn der Fokus nicht auf ein Steuerelement gesetzt wird
 }
 
@@ -332,7 +335,7 @@ void CVirtuaGUserWinRecorderDlg::OnCancel()
 
 void CVirtuaGUserWinRecorderDlg::OnOK()
 {
-
+	AfxMessageBox(L"CVirtuaGUserWinRecorderDlg::OnOK");
 }
 
 HBRUSH CVirtuaGUserWinRecorderDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)

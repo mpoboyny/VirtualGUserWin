@@ -67,18 +67,19 @@ protected:
 	CMyEditBrowseCtrl m_wndFolderEdit;
 	CButton m_chkCleanWrkFolder;
 	CStatic m_stcOverwrite;
+	CEdit m_edWorkName;
 
+protected:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 
 	// Generierte Funktionen für die Meldungstabellen
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
-
+	afx_msg void OnBnClickedChkCleanWorkFolder();
 	virtual void OnCancel() override;
     virtual void OnOK() override;
 
 	DECLARE_MESSAGE_MAP();
-public:
-	afx_msg void OnBnClickedChkCleanWorkFolder();
+	
 };

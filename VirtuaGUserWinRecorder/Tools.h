@@ -12,4 +12,6 @@ namespace Tools
     CString GetUserDocumentsPath();
     BOOL IsFolderExist(const CString& folderPath);
     BOOL IsFolderEmpty(const CString& folderPath);
+    CString TempFileName();
+    CString TempOnlyFileName();
 }
