@@ -14,9 +14,9 @@ public:
     virtual ~CRichEditLogCtrl();
 
     // Fügt eine Zeile ohne Timestamp an
-    void AppendLine(LPCTSTR pszText);
+    void AppendLine(LPCTSTR pszText, LogType type);
     // Fügt eine Zeile mit Zeitstempel an
-    void AppendTimestampedLine(LPCTSTR pszText);
+    void AppendTimestampedLine(LPCTSTR pszText, LogType type);
     // Löscht den Inhalt
     void Clear();
     // Setzt den ReadOnly-Zustand

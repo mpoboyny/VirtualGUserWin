@@ -336,7 +336,9 @@ void CVirtuaGUserWinRecorderDlg::OnCancel()
 
 void CVirtuaGUserWinRecorderDlg::OnOK()
 {
-	m_wndLog.AppendTimestampedLine(L"I do it!");
+	m_wndLog.AppendTimestampedLine(L"I do it!", CRichEditLogCtrl::LogType_Error);
+	m_wndLog.AppendTimestampedLine(L"I do it!", CRichEditLogCtrl::LogType_Warning);
+	m_wndLog.AppendTimestampedLine(L"I do it!", CRichEditLogCtrl::LogType_Info);
 }
 
 HBRUSH CVirtuaGUserWinRecorderDlg::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor)
